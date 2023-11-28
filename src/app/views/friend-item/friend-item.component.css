@@ -1,22 +1,20 @@
-/* friend-item.component.css */
-
 .friend-card {
   display: flex;
-  align-items: center; /* Align items vertically in the center */
+  align-items: center;
   width: 100%;
   flex-direction: row;
 }
 
 .friend-details {
-  width: 70%; /* Adjust the width as needed */
+  width: 70%;
   padding: 10px;
   box-sizing: border-box;
 }
 
 .profile-picture {
-  width: 150px; /* Adjust the width as needed */
-  height: 150px; /* Adjust the height as needed */
-  border-radius: 50%; /* Make it round */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   background-size: cover;
-  margin-right: 10px; /* Add some spacing between profile picture and details */
+  margin-right: 10px;
 }
