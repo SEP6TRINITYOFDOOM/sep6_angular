@@ -10,7 +10,7 @@ import { MovieCarouselComponent } from './homepage/Components/movie-carousel/mov
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
     HomepageComponent,
     NavigationComponent,
     MovieCarouselComponent
