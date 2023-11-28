@@ -1,0 +1,37 @@
+/* your-component.component.css */
+
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  width: 12rem;
+  height: 20rem;
+  overflow: hidden;
+  background-color: white;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.movie-poster {
+  flex: 1; /* Grow to fill the available space */
+  overflow: hidden;
+}
+
+.movie-poster img {
+  width: 100%; /* Make the image fill the container */
+  height: 100%; /* Make the image fill the container */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  transition: transform 0.3s ease; /* Add transition for smooth effect */
+}
+
+.movie-poster:hover img {
+  transform: scale(1.05); /* Scale up the image on hover */
+}
+
+.footer {
+  height: 30px;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  box-sizing: border-box;
+  text-align: center;
+}
