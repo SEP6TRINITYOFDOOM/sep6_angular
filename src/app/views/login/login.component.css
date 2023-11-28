@@ -1,0 +1,40 @@
+
+.layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.section {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: flex; /* Align children as rows */
+  flex-direction: column; /* Align children horizontally */
+  align-items: center; /* Center children vertically */
+  justify-content: center;
+}
+
+.layout-horizontal {
+  display: flex; /* Align children as rows */
+  flex-direction: row; /* Align children horizontally */
+  align-items: center;
+}
+
+.fab {
+  margin-right: 10px; /* Adjust the spacing as needed */
+}
+
+.fabs {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+/* Remove margin from the last mat-fab button to prevent extra spacing */
+.fab:last-child {
+  margin-right: 0;
+}
+
+.no-account{
+  color: white;
+  background-color: #e91e63;
+}
