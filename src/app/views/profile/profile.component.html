@@ -1,0 +1,36 @@
+<!-- your-component.component.html -->
+
+<div class="page-container">
+  <div class="profile-container">
+    <div class="background-image">
+    </div>
+    <div class="profile-info">
+      <img src="https://cdn.discordapp.com/avatars/362680397311508491/b2d616df0d7e2beb725c056e0b895729?size=1024"
+           alt="Profile Picture" class="profile-picture">
+      <div class="user-info">
+        <h2>Adam</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs-container">
+    <mat-tab-group>
+      <mat-tab label="Favourites">
+        <div class="movie-list">
+          <app-movie-item *ngFor="let movie of movies" [title]="movie.title"
+                          [posterURL]="movie.posterUrl"></app-movie-item>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Friends">
+        <div class="friend-list list">
+          <div *ngFor="let friend of friends; let i = index" class="friend-row" [ngClass]="{'new-row': i % 2 === 0 && i !== 0}">
+            <app-friend-item [friendName]="friend.name" [profilePictureUrl]="friend.profilePicUrl"></app-friend-item>
+          </div>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Settings"><app-account-settings></app-account-settings></mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

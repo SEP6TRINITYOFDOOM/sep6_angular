@@ -1,0 +1,84 @@
+/* your-component.component.css */
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-container {
+  background-color: gray;
+  position: relative;
+  flex: 1; /* Takes up remaining space */
+  height: 300px; /* Set the height based on your design */
+  display: flex;
+  flex-direction: column;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.movie-list {
+  display: flex;
+  flex-direction: row; /* Display items in a column */
+  flex-wrap: wrap; /* Allow items to wrap to the next column */
+  max-width: 1200px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.profile-info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-picture {
+  width: 100px; /* Set the width as needed */
+  height: 100px; /* Set the height as needed */
+  border-radius: 50%; /* Make the image circular */
+  margin-bottom: 10px; /* Add spacing between profile picture and username */
+}
+
+.user-info {
+  text-align: center;
+  color: black;
+}
+
+.tabs-container {
+  flex: 1;
+  padding: 20px;
+  background-color: #303030;
+  color: white
+}
+
+.list {
+  margin-top: 20px;
+  padding-right: 200px;
+  padding-left: 200px;
+}
+
+.friend-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Add space between items */
+}
+
+.friend-row {
+  width: 48%; /* Adjust the width of each friend row */
+  box-sizing: border-box;
+  margin-bottom: 10px; /* Add space between each friend item */
+}
+
+.new-row {
+  clear: both;
+}
+
+
