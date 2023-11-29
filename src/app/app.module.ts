@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NavigationComponent } from './homepage/Components/navigation/navigation.component';
 import { MovieCarouselComponent } from './homepage/Components/movie-carousel/movie-carousel.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MovieCarouselComponent } from './homepage/Components/movie-carousel/mov
     RegisterComponent,
     HomepageComponent,
     NavigationComponent,
-    MovieCarouselComponent
+    MovieCarouselComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule
