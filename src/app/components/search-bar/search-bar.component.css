@@ -1,0 +1,37 @@
+form {
+  display: flex;
+  width: 40em;
+}
+
+select, input, button {
+  border: 0;
+  background-color: #f1f1f1;
+  height: 4em;
+  padding: 1px;
+
+}
+
+select {
+  flex: 1; /* Take as much space as available */
+  border-radius: 15px 0px 0px 15px;
+  padding: 0px 30px;
+
+}
+
+button {
+  flex: 1; /* Take as much space as available */
+  float: right;
+}
+
+button {
+  border: none;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0px 15px 15px 0px;
+}
+
+input {
+  flex: 2; /* Take twice as much space as the select */
+  padding: 0px 30px;
+}
