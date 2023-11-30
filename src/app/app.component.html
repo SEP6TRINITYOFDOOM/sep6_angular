@@ -1,3 +1,41 @@
-<app-login></app-login>
-<app-profile></app-profile>
-<app-homepage></app-homepage>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer  class="example-sidenav" mode="side">
+
+    <div *ngIf="open">
+      <h1>Navigation</h1>
+
+      <nav>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <p>
+                <a routerLink="/movie-details" routerLinkActive="active" class="link-offset-2 link-underline link-underline-opacity-0">
+                  Movie details
+                </a>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>
+                <a routerLink="/register" routerLinkActive="active" class="link-offset-2 link-underline link-underline-opacity-0">
+                  Register
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+  </mat-drawer>
+
+  <app-navbar [sideNavOpen]="open" (sideNavStateChange)="drawer.toggle(); open=$event"></app-navbar>
+
+<router-outlet></router-outlet>
+<!--
+  Router view go below
+  -->
+
+</mat-drawer-container>

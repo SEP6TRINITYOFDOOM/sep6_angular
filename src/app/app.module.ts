@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {RegisterComponent} from './register/register.component';
 import {HomepageComponent} from './homepage/homepage.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {SearchBarComponent} from './search-bar/search-bar.component';
@@ -23,14 +22,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
-import {MovieDetailsComponent} from './movie-details/movie-details.component';
-import {MovieCarouselComponent} from "./movie-carousel/movie-carousel.component";
+import {MovieCarouselComponent} from "./homepage/movie-carousel/movie-carousel.component";
+import { NewsCardComponent } from './homepage/news-card/news-card.component';
+import {RouterLink, RouterLinkActive} from "@angular/router";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {AppRoutingModule, routingComponents} from "./app-routing/app-routing.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
     HomepageComponent,
     MovieCarouselComponent,
     SearchBarComponent,
@@ -40,7 +41,8 @@ import {MovieCarouselComponent} from "./movie-carousel/movie-carousel.component"
     MovieItemComponent,
     FriendItemComponent,
     AccountSettingsComponent,
-    MovieDetailsComponent
+    NewsCardComponent,
+    routingComponents
   ],
   imports: [
     BrowserModule,
@@ -55,10 +57,14 @@ import {MovieCarouselComponent} from "./movie-carousel/movie-carousel.component"
     MatGridListModule,
     MatMenuModule,
     MatButtonToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    RouterLink,
+    RouterLinkActive,
+    MatSidenavModule,
+    AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent, HomepageComponent, MovieCarouselComponent, RegisterComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

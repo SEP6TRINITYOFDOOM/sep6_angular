@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  showFiller = false;
+  @Input() sideNavOpen!: boolean;
+  @Output() sideNavStateChange = new EventEmitter<boolean>();
+
+  toggle(){
+    this.sideNavOpen = !this.sideNavOpen;
+    this.sideNavStateChange.emit(this.sideNavOpen);
+  }
+
 }
