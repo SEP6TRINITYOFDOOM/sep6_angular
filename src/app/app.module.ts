@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { MovieCarouselComponent } from './components/movie-carousel/movie-carousel.component';
+import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from "@angular/material/toolbar";
