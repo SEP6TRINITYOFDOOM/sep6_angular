@@ -4,9 +4,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './register/register.component';
 import {HomepageComponent} from './homepage/homepage.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {SearchBarComponent} from './search-bar/search-bar.component';
 import {LoginComponent} from './views/login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
@@ -24,7 +23,8 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import {MovieDetailsComponent} from './movie-details/movie-details.component';
+import {MovieCarouselComponent} from "./movie-carousel/movie-carousel.component";
 
 
 @NgModule({
