@@ -25,6 +25,10 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
 import {MovieDetailsComponent} from './movie-details/movie-details.component';
 import {MovieCarouselComponent} from "./movie-carousel/movie-carousel.component";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./auth/auth.service";
+import {AuthGuard} from "./auth/auth.guard";
+import {TokenInterceptor} from "./auth/token.interceptor";
 
 
 @NgModule({
@@ -55,9 +59,16 @@ import {MovieCarouselComponent} from "./movie-carousel/movie-carousel.component"
     MatGridListModule,
     MatMenuModule,
     MatButtonToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },],
   bootstrap: [AppComponent, HomepageComponent, MovieCarouselComponent, RegisterComponent]
 })
 export class AppModule {
