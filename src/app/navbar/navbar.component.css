@@ -12,3 +12,12 @@
   padding-right: 1em;
   padding-right: 1em;
 }
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+}

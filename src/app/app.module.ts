@@ -29,6 +29,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {AppRoutingModule, routingComponents} from "./app-routing/app-routing.module";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,4 +68,10 @@ import {AppRoutingModule, routingComponents} from "./app-routing/app-routing.mod
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
+  icon = "";
+
+  constructor() {
+  }
+
 }
