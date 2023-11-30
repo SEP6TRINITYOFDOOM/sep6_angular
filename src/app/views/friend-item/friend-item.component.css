@@ -1,0 +1,20 @@
+.friend-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+}
+
+.friend-details {
+  width: 70%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-size: cover;
+  margin-right: 10px;
+}
