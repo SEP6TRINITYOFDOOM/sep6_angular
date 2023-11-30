@@ -27,6 +27,10 @@ import { NewsCardComponent } from './homepage/news-card/news-card.component';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {AppRoutingModule, routingComponents} from "./app-routing/app-routing.module";
+import { HeaderComponent } from './header/header.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -43,7 +47,9 @@ import {AppRoutingModule, routingComponents} from "./app-routing/app-routing.mod
     FriendItemComponent,
     AccountSettingsComponent,
     NewsCardComponent,
-    routingComponents
+    routingComponents,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,9 @@ import {AppRoutingModule, routingComponents} from "./app-routing/app-routing.mod
     RouterLink,
     RouterLinkActive,
     MatSidenavModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlexLayoutModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
