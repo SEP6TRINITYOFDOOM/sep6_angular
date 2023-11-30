@@ -28,6 +28,11 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
 
+import {MovieDetailsComponent} from './movie-details/movie-details.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./auth/auth.service";
+import {AuthGuard} from "./auth/auth.guard";
+import {TokenInterceptor} from "./auth/token.interceptor";
 
 
 @NgModule({
@@ -63,10 +68,17 @@ import {MatListModule} from "@angular/material/list";
     NgOptimizedImage,
     MatExpansionModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-
+  providers: [AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },],
+  bootstrap: [AppComponent, HomepageComponent, MovieCarouselComponent, RegisterComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
