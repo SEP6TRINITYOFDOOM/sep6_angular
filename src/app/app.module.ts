@@ -24,6 +24,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {MatMenuModule} from "@angular/material/menu";
     MovieItemComponent,
     FriendItemComponent,
     AccountSettingsComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
