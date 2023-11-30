@@ -4,8 +4,9 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {RegisterComponent} from './register/register.component';
 import {HomepageComponent} from './homepage/homepage.component';
-import {NavigationComponent} from './homepage/Components/navigation/navigation.component';
-import {MovieCarouselComponent} from './homepage/Components/movie-carousel/movie-carousel.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 import {LoginComponent} from './views/login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
@@ -18,14 +19,21 @@ import {MatCardModule} from "@angular/material/card";
 import {CommonModule} from "@angular/common";
 import {FriendItemComponent} from './views/friend-item/friend-item.component';
 import {AccountSettingsComponent} from './views/account-settings/account-settings.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSelectModule} from "@angular/material/select";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatMenuModule} from "@angular/material/menu";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     HomepageComponent,
-    NavigationComponent,
     MovieCarouselComponent,
+    SearchBarComponent,
+    NavbarComponent,
     LoginComponent,
     ProfileComponent,
     MovieItemComponent,
@@ -40,10 +48,15 @@ import {AccountSettingsComponent} from './views/account-settings/account-setting
     MatIconModule,
     MatTabsModule,
     MatCardModule,
-    CommonModule
+    CommonModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatButtonToggleModule,
+    MatToolbarModule
   ],
   providers: [],
-  bootstrap: [AppComponent, HomepageComponent, NavigationComponent, MovieCarouselComponent, RegisterComponent]
+  bootstrap: [AppComponent, HomepageComponent, MovieCarouselComponent, RegisterComponent]
 })
 export class AppModule {
 }
