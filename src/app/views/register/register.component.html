@@ -1,61 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <title>Your Page Title</title>
-</head>
-<body>
-
-<div class="container-fluid">
-  <div class="row row-height-100">
-    <div class="col center-vertical">
-      <!-- Left half content goes here -->
-      <!-- Registration form content goes here -->
-      <form>
-
-        <h2 class="mb-5" id="register-title">Register Your Account</h2>
-
-        <div class="pt-5">
-          <label for="exampleInputUsername1" class="form-label">Username</label>
-          <input type="email" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp">
+<ng-container>
+  <div class="container-fluid">
+    <div class="layout">
+      <div class="section">
+        <h1>Create an Account</h1>
+        <div class="layout-horizontal fabs">
+          <button class="fab" mat-fab color="primary">
+            <mat-icon>apple-logo</mat-icon>
+          </button>
+          <button class="fab" mat-fab color="primary">
+            <mat-icon>google-logo</mat-icon>
+          </button>
+          <button class="fab" mat-fab color="primary">
+            <mat-icon>fb-logo</mat-icon>
+          </button>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="container">
-          <div class="d-grid gap-2">
-            <button class="btn btn-primary" type="button">Register</button>
-          </div>
-        </div>
-      </form>
-
-    </div>
-    <div class="col-5 center-vertical" id="right-half">
-
-      <form>
-      <div class="container mt-5">
-        <div class="d-md-flex flex-md-column justify-content-between">
-          <div class="mb-3">
-            <h2 class="mb-5" id="login-title" style="color: white;">Already have an account?</h2>
-          </div>
-          <div>
-            <div class="d-grid gap-2">
-              <button class="btn btn-primary">Sign in here</button>
-            </div>
-          </div>
-        </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Username</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>E-mail</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Sign up</button>
       </div>
-      </form>
+
+      <div class="section no-account">
+        <h1>No account yet?</h1>
+        <a routerLink="/login">
+          <button mat-raised-button color="accent" >Sign in</button>
+        </a>
+      </div>
     </div>
   </div>
-</div>
-
-</body>
-</html>
+</ng-container>
