@@ -2,6 +2,11 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
+import {FormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {HomepageComponent} from './views/homepage/homepage.component';
+
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
@@ -57,13 +62,13 @@ import {MatListModule} from "@angular/material/list";
     AppRoutingModule,
     FlexLayoutModule,
     MatListModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatExpansionModule,
+    FormsModule,
+    MatFormFieldModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule {
-  constructor() {
-  }
+  bootstrap: [AppComponent],
 
-}
+})
+export class AppModule { }
