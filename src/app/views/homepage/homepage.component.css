@@ -1,4 +1,10 @@
 footer {
   display: block;
 }
+.inline-block {
+  display: inline-block;
+}
 
+.actor {
+  padding: 20px;
+}
