@@ -8,6 +8,7 @@ import {ProfileComponent} from "../views/profile/profile.component";
 import {MovieItemComponent} from "../views/movie-item/movie-item.component";
 import {FriendItemComponent} from "../views/friend-item/friend-item.component";
 import {AccountSettingsComponent} from "../views/account-settings/account-settings.component";
+import {SearchResultComponent} from "../search-result/search-result.component";
 
 const routes: Routes = [
   { path: 'home',             component: HomepageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'friend-item',      component: FriendItemComponent},
   { path: 'movie-item',       component: MovieItemComponent},
   { path: 'movie-details',    component: MovieDetailsComponent},
+  { path: 'search', component: SearchResultComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -34,4 +36,5 @@ export const routingComponents = [
   AccountSettingsComponent,
   FriendItemComponent,
   MovieItemComponent,
+  SearchResultComponent,
   MovieDetailsComponent];

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="../search-result/search-result.component.css">
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <title>Title</title>
+
+</head>
+<body>
+<p id="word">Welcome to the search interface</p>
+<br>
+  <div class="search-box">
+    <input type="search" class="search-txt" placeholder="Search">
+    <a class="search-btn"  (click)="onSearchButtonClick()">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </a>
+  </div>
+<br>
+<br>
+
+<mat-tab-group>
+  <mat-tab label="Movies">
+    <br>
+    <div class="container">
+
+        <button (click)="ContentVisibility()" class="dropbtn">Comedy</button>
+
+        <button (click)="ContentVisibility1()" class="dropbtn" style="margin-left: 3%">Action</button>
+
+        <button (click)="ContentVisibility2()" class="dropbtn" style="margin-left: 3%">Romance</button>
+
+        <button (click)="ContentVisibility3()" class="dropbtn" style="margin-left: 3%">Horror</button>
+    </div>
+    <br>
+    <div *ngIf="isContentVisible" class="outside" >
+      <div class="container1">
+      <img src="assets/image/comedy1.png" width="150px" height="300px">
+      <p>Name: The Gold Rush</p>
+        <p>Directed By Charlie Chaplin</p>
+      </div>
+      <div class="container1">
+      <img src="assets/image/comedy2.png" width="150px" height="300px">
+      <p>Name: Spun</p>
+      <p>Directed By
+        Jonas Åkerlund</p>
+      </div>
+        <div class="container1">
+      <img src="assets/image/comedy3.png" width="150px" height="300px">
+      <p>Name: Attack of the Killer Tomatoes!</p>
+      <p>Directed By
+        John De Bello</p>
+        </div>
+  </div>
+    <div *ngIf="isContentVisible1" class="outside">
+      <div class="container1">
+        <img src="assets/image/action1.png" width="150px" height="300px">
+        <p>Name: Direct Action</p>
+        <p>Directed By
+          Sidney J. Furie</p>
+      </div>
+      <div class="container1">
+        <img src="assets/image/action2.png" width="150px" height="300px">
+        <p>Name: Raven</p>
+        <p>Directed By
+          Russell Solberg</p>
+      </div>
+      <div class="container1">
+        <img src="assets/image/action3.png" width="150px" height="300px">
+        <p>Name: Abraxas, Guardian of the Universe</p>
+        <p>Directed By
+          Damian Lee</p>
+      </div>
+    </div>
+    <div *ngIf="isContentVisible2" class="outside">
+      <div class="container1">
+        <img src="assets/image/romance1.png" width="150px" height="300px">
+        <p>Name: Already Tomorrow in Hong Kong</p>
+        <p>Directed By
+          Emily Ting</p>
+      </div>
+      <div class="container1">
+        <img src="assets/image/romance2.png" width="150px" height="300px">
+        <p>Name: The Whole Wide World</p>
+        <p>Directed By
+          Dan Ireland</p>
+      </div>
+      <div class="container1">
+        <img src="assets/image/romance3.png" width="150px" height="300px">
+        <p>Name: Not Since You</p>
+        <p>Directed By
+          Jeff Stephenson</p>
+      </div>
+    </div>
+    <div *ngIf="isContentVisible3">
+      <p>Horror</p>
+    </div>
+  </mat-tab>
+  <mat-tab label="Actor">
+    <button *ngIf="imageVisible6" (click)="imageVisibility3()" style="text-align: center; margin-top: 3%">Back</button>
+    <div class="outside"  style="margin-top: 3%">
+    <div class="container1">
+      <img src="assets/image/TomHardy.png" width="150px" height="300px" *ngIf="imageVisible" (click)="imageVisibility()">
+      <div *ngIf="imageVisible3">
+      <p >Name: Tom Hardy</p>
+      <p>Born September 15, 1977</p>
+      <p>Country: England</p>
+        </div>
+    </div>
+    <div class="container1">
+    <img src="assets/image/CillianMurphy.png" width="150px" height="300px" *ngIf="imageVisible1" (click)="imageVisibility1()">
+     <div *ngIf="imageVisible4">
+      <p>Name: Cillian Murphy</p>
+      <p>Born May 25, 1976</p>
+      <p>Country: Ireland</p>
+    </div>
+    </div>
+    <div class="container1">
+    <img src="assets/image/NataliePortman.png" width="150px" height="300px" *ngIf="imageVisible2" (click)="imageVisibility2()">
+      <div *ngIf="imageVisible5">
+    <p>Name: Natalie Portman</p>
+    <p>born June 9, 1981</p>
+    <p>Country: America</p>
+      </div>
+    </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+<script>
+
+</script>
+</body>
+</html>
+
