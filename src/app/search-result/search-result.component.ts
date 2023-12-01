@@ -8,7 +8,6 @@ import {CommonModule} from "@angular/common";
 })
 export class SearchResultComponent {
 
-  searchText: string = '';
   isContentVisible: boolean = false;
   isContentVisible1: boolean = false;
   isContentVisible2: boolean = false;
@@ -84,21 +83,4 @@ export class SearchResultComponent {
     this.imageVisible6 =false;
   }
 
-  ButtonVisibility() :void{
-    console.log('searchText:', this.searchText);
-    if (this.searchText.toLowerCase() === 'comedy') {
-      this.isContentVisible = true;
-      this.isContentVisible1 = false;
-      this.isContentVisible2= false;
-      this.isContentVisible3= false;
-    } else {
-      this.isContentVisible = false;
-      this.isContentVisible1 = false;
-      this.isContentVisible2= false;
-      this.isContentVisible3= false;
-    }
-  }
-  onSearchButtonClick() {
-    this.ButtonVisibility();
-  }
 }

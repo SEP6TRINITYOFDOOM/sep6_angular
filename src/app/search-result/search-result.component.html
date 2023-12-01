@@ -15,7 +15,7 @@
 <br>
   <div class="search-box">
     <input type="search" class="search-txt" placeholder="Search">
-    <a class="search-btn"  (click)="onSearchButtonClick()">
+    <a class="search-btn" >
       <i class="fa fa-search" aria-hidden="true"></i>
     </a>
   </div>
@@ -38,22 +38,10 @@
     <br>
     <div *ngIf="isContentVisible" class="outside" >
       <div class="container1">
-      <img src="assets/image/comedy1.png" width="150px" height="300px">
-      <p>Name: The Gold Rush</p>
-        <p>Directed By Charlie Chaplin</p>
+      <app-movie-item [title]='"The Gold Rush"' [posterURL]='"assets/image/comedy1.png"' />
+        <app-movie-item [title]='"Spun"' [posterURL]='"assets/image/comedy2.png"' />
+        <app-movie-item [title]='"Attack of the Killer Tomatoes!"' [posterURL]='"assets/image/comedy3.png"' />
       </div>
-      <div class="container1">
-      <img src="assets/image/comedy2.png" width="150px" height="300px">
-      <p>Name: Spun</p>
-      <p>Directed By
-        Jonas Åkerlund</p>
-      </div>
-        <div class="container1">
-      <img src="assets/image/comedy3.png" width="150px" height="300px">
-      <p>Name: Attack of the Killer Tomatoes!</p>
-      <p>Directed By
-        John De Bello</p>
-        </div>
   </div>
     <div *ngIf="isContentVisible1" class="outside">
       <div class="container1">
