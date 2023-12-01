@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="">
+</head>
+  <body>
+    <mat-grid-list [cols]="4" [rowHeight]="'30em'">
+      <mat-grid-tile [colspan]="3" [rowspan]="2">
+
+        <app-movie-carousel/>
+
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="1" [rowspan]="3">
+
+        <div class="container">
+          <!-- Content here -->
+          <h1>MOVIE NEWS</h1>
+          <app-news-card/>
+          <app-news-card/>
+
+        </div>
+
+
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="3" [rowspan]="1" [style.background]="'lightpink'">
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </body>
+</html>
+
