@@ -5,8 +5,6 @@ import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {HomepageComponent} from './views/homepage/homepage.component';
-
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
