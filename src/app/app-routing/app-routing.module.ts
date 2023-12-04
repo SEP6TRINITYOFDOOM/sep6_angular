@@ -9,13 +9,14 @@ import {MovieItemComponent} from "../views/movie-item/movie-item.component";
 import {FriendItemComponent} from "../views/friend-item/friend-item.component";
 import {AccountSettingsComponent} from "../views/account-settings/account-settings.component";
 import {SearchResultComponent} from "../search-result/search-result.component";
+import {AuthGuard} from "../auth/auth.guard";
 
 const routes: Routes = [
   { path: 'home',             component: HomepageComponent},
   { path: 'register',         component: RegisterComponent},
   { path: 'login',            component: LoginComponent},
-  { path: 'profile',          component: ProfileComponent},
-  { path: 'account-settings', component: AccountSettingsComponent},
+  { path: 'profile',          component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'settings', component: AccountSettingsComponent, canActivate: [AuthGuard]},
   { path: 'friend-item',      component: FriendItemComponent},
   { path: 'movie-item',       component: MovieItemComponent},
   { path: 'movie-details',    component: MovieDetailsComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
 export const routingComponents = [

@@ -26,4 +26,12 @@ export class AuthService{
     return !!this.getToken();
   }
 
+  login(username:String, password:String) {
+
+  }
+
+  register(username:String, password:String){
+
+  }
+
 }

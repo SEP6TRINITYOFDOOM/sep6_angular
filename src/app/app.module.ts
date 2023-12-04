@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
@@ -18,13 +18,10 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
-import {MovieDetailsComponent} from './movie-details/movie-details.component';
-import {MovieCarouselComponent} from "./movie-carousel/movie-carousel.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptor} from "./auth/token.interceptor";
-import {NavbarComponent} from "./navbar/navbar.component";
 import { NewsCardComponent } from './components/news-card/news-card.component';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -33,6 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
+import {MovieCarouselComponent} from "./components/movie-carousel/movie-carousel.component";
 
 
 
@@ -60,7 +58,7 @@ import {MatListModule} from "@angular/material/list";
     MatMenuModule,
     MatButtonToggleModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
     MatToolbarModule,
     RouterLink,
     RouterLinkActive,
@@ -71,7 +69,8 @@ import {MatListModule} from "@angular/material/list";
     NgOptimizedImage,
     MatExpansionModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService,
     AuthGuard,
