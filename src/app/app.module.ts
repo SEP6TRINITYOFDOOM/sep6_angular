@@ -2,22 +2,17 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {RegisterComponent} from './register/register.component';
-import {HomepageComponent} from './homepage/homepage.component';
-import {NavbarComponent} from './navbar/navbar.component';
-import {SearchBarComponent} from './search-bar/search-bar.component';
-import {LoginComponent} from './views/login/login.component';
+import {FormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {SearchBarComponent} from './components/search-bar/search-bar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import {ProfileComponent} from './views/profile/profile.component';
 import {MatTabsModule} from "@angular/material/tabs";
-import {MovieItemComponent} from './views/movie-item/movie-item.component';
 import {MatCardModule} from "@angular/material/card";
-import {CommonModule} from "@angular/common";
-import {FriendItemComponent} from './views/friend-item/friend-item.component';
-import {AccountSettingsComponent} from './views/account-settings/account-settings.component';
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
@@ -29,22 +24,27 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptor} from "./auth/token.interceptor";
+import {NavbarComponent} from "./navbar/navbar.component";
+import { NewsCardComponent } from './components/news-card/news-card.component';
+import {RouterLink, RouterLinkActive} from "@angular/router";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {AppRoutingModule, routingComponents} from "./app-routing/app-routing.module";
+import { HeaderComponent } from './components/header/header.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
+import {MatListModule} from "@angular/material/list";
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
-    HomepageComponent,
     MovieCarouselComponent,
     SearchBarComponent,
-    NavbarComponent,
-    LoginComponent,
-    ProfileComponent,
-    MovieItemComponent,
-    FriendItemComponent,
-    AccountSettingsComponent,
-    MovieDetailsComponent
+    NewsCardComponent,
+    routingComponents,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +61,17 @@ import {TokenInterceptor} from "./auth/token.interceptor";
     MatButtonToggleModule,
     MatToolbarModule,
     HttpClientModule
+    MatToolbarModule,
+    RouterLink,
+    RouterLinkActive,
+    MatSidenavModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    MatListModule,
+    NgOptimizedImage,
+    MatExpansionModule,
+    FormsModule,
+    MatFormFieldModule
   ],
   providers: [AuthService,
     AuthGuard,
@@ -69,7 +80,6 @@ import {TokenInterceptor} from "./auth/token.interceptor";
       useClass: TokenInterceptor,
       multi: true,
     },],
-  bootstrap: [AppComponent, HomepageComponent, MovieCarouselComponent, RegisterComponent]
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

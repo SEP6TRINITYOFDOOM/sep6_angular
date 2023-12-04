@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+  <body>
+
+    <div class="container text-center">
+      <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+      <div class="row">
+        <div class="col-xl-8 col-sm-12">
+          <h2>Trending movies</h2>
+          <app-movie-item class="inline-block"
+            *ngFor="let trendingMovie of trendingMovies"
+            [title]="trendingMovie.title"
+            [posterURL]="trendingMovie.posterURL"
+          />
+        </div>
+        <div class="col-xl-4 col-sm-12">
+          <h2>Trending actors</h2>
+          <app-friend-item class="actor" 
+            *ngFor="let trendingActor of trendingActors"
+            [friendName]="trendingActor.friendName"
+            [profilePictureUrl]="trendingActor.profilePictureUrl"
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
