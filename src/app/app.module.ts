@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {importProvidersFrom, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
@@ -27,6 +27,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 
@@ -63,7 +64,8 @@ import {MatListModule} from "@angular/material/list";
     NgOptimizedImage,
     MatExpansionModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
