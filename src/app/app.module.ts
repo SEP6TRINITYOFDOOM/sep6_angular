@@ -27,8 +27,6 @@ import { HeaderComponent } from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
-
-import {MovieDetailsComponent} from './movie-details/movie-details.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
