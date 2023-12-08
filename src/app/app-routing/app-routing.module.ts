@@ -9,6 +9,7 @@ import {MovieItemComponent} from "../views/movie-item/movie-item.component";
 import {FriendItemComponent} from "../views/friend-item/friend-item.component";
 import {AccountSettingsComponent} from "../views/account-settings/account-settings.component";
 import {SearchResultComponent} from "../search-result/search-result.component";
+import {SearchBarComponent} from "../components/search-bar/search-bar.component";
 
 const routes: Routes = [
   { path: 'home',             component: HomepageComponent},

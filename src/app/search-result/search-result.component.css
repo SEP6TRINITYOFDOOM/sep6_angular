@@ -1,10 +1,10 @@
 #word{
   font-weight: bolder;
-  /*background-image: -webkit-linear-gradient(top, #ffffff, #3fcc8f, #00b3ff);
+  background-image: -webkit-linear-gradient(top, #0d0b0b, #85230a, #e90707);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: ran 1s linear infinite;
-  */
+  font-size: xx-large;
   align-items: center;
   margin-top: 3%;
   display: flex;
@@ -102,13 +102,27 @@ a:hover {
 }
 
 .outside{
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(20%), 1fr));
+  width: 80%;
+  margin: 0 auto;
 }
 
-.container1{
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+.outside1{
   display: flex;
+  justify-content: center;
+  font-size: larger;
+  font-family: "Bauhaus 93";
 }
+
+.center-text {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  color: #e91e63;
+}
+
+

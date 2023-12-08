@@ -1,86 +1,91 @@
-import {Component} from '@angular/core';
-import {CommonModule} from "@angular/common";
-
+import {Component, OnInit} from '@angular/core';
+import { SearchService } from '../components/ServiceSearch/search.service';
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.css'],
 })
-export class SearchResultComponent {
+export class SearchResultComponent implements OnInit {
 
-  isContentVisible: boolean = false;
-  isContentVisible1: boolean = false;
-  isContentVisible2: boolean = false;
-  isContentVisible3: boolean = false;
+  panelOpenState = false;
+  isContentVisibleButton: boolean = false;
+  isContentVisibleComedy: boolean = false;
+  isContentVisibleAction: boolean = false;
+  isContentVisibleRomance: boolean = false;
+  isContentVisibleHorror: boolean = false;
+  isContentVisibleAllMovie: boolean = true;
+  isContentVisibleSearchImage: boolean = false;
 
   ContentVisibility(): void {
-    this.isContentVisible = true;
-    this.isContentVisible1 = false;
-    this.isContentVisible2= false;
-    this.isContentVisible3= false;
+    this.isContentVisibleComedy = true;
+    this.isContentVisibleAction = false;
+    this.isContentVisibleRomance = false;
+    this.isContentVisibleHorror = false;
   }
+
   ContentVisibility1(): void {
-    this.isContentVisible1=true;
-    this.isContentVisible=false;
-    this.isContentVisible2= false;
-    this.isContentVisible3= false;
+    this.isContentVisibleAction = true;
+    this.isContentVisibleComedy = false;
+    this.isContentVisibleRomance = false;
+    this.isContentVisibleHorror = false;
   }
+
   ContentVisibility2(): void {
-    this.isContentVisible2=true;
-    this.isContentVisible=false;
-    this.isContentVisible1= false;
-    this.isContentVisible3= false;
+    this.isContentVisibleRomance = true;
+    this.isContentVisibleComedy = false;
+    this.isContentVisibleAction = false;
+    this.isContentVisibleHorror = false;
   }
+
   ContentVisibility3(): void {
-    this.isContentVisible3=true;
-    this.isContentVisible=false;
-    this.isContentVisible1= false;
-    this.isContentVisible2= false;
+    this.isContentVisibleHorror = true;
+    this.isContentVisibleComedy = false;
+    this.isContentVisibleAction = false;
+    this.isContentVisibleRomance = false;
   }
 
-  imageVisible : boolean=true;
-  imageVisible1 : boolean=true;
-  imageVisible2 : boolean=true;
-  imageVisible3 : boolean=false;
-  imageVisible4 : boolean=false;
-  imageVisible5 : boolean=false;
-  imageVisible6 : boolean=false;
+  searchUrl: string = '';
+  searchTitle: string = '';
+  searchUrl1: string = '';
+  searchTitle1: string = '';
+  searchUrl2: string = '';
+  searchTitle2: string = '';
 
-  imageVisibility(): void {
-    this.imageVisible =true;
-    this.imageVisible1 =false;
-    this.imageVisible2 =false;
-    this.imageVisible3 =true;
-    this.imageVisible4 =false;
-    this.imageVisible5 =false;
-    this.imageVisible6 =true;
-  }
-  imageVisibility1(): void {
-    this.imageVisible =false;
-    this.imageVisible1 =true;
-    this.imageVisible2 =false;
-    this.imageVisible3 =false;
-    this.imageVisible4 =true;
-    this.imageVisible5 =false;
-    this.imageVisible6 =true;
-  }
-  imageVisibility2(): void {
-    this.imageVisible =false;
-    this.imageVisible1 =false;
-    this.imageVisible2 =true;
-    this.imageVisible3 =false;
-    this.imageVisible4 =false;
-    this.imageVisible5 =true;
-    this.imageVisible6 =true;
-  }
-  imageVisibility3(): void {
-    this.imageVisible =true;
-    this.imageVisible1 =true;
-    this.imageVisible2 =true;
-    this.imageVisible3 =false;
-    this.imageVisible4 =false;
-    this.imageVisible5 =false;
-    this.imageVisible6 =false;
+  constructor(private searchService: SearchService) {
   }
 
+    ngOnInit(): void {
+
+      this.searchService.searchObservable$.subscribe((searchResults) => {
+        const firstResult = (searchResults as { title: string; url: string }[])[0];
+        const secondResult = (searchResults as { title: string; url: string }[])[1];
+        const thirdResult = (searchResults as { title: string; url: string }[])[2];
+        if (firstResult && secondResult && thirdResult) {
+          this.searchTitle = firstResult.title;
+          this.searchUrl = firstResult.url;
+          this.searchTitle1 = secondResult.title;
+          this.searchUrl1 = secondResult.url;
+          this.searchTitle2 = thirdResult.title;
+          this.searchUrl2 = thirdResult.url;
+          this.isContentVisibleSearchImage = true;
+
+          if (this.searchUrl !== '') {
+            this.isContentVisibleAllMovie = false;
+            this.isContentVisibleButton = true;
+          }
+        } else {
+          this.searchTitle = '';
+          this.searchUrl = '';
+          this.isContentVisibleSearchImage = false;
+          this.isContentVisibleAllMovie = true;
+          this.isContentVisibleButton = false;
+        }
+      });
+    }
+
+    BackToMovie(){
+    this.isContentVisibleSearchImage = false;
+    this.isContentVisibleButton = false;
+    this.isContentVisibleAllMovie = true;
+}
 }

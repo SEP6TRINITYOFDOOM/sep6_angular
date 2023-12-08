@@ -32,6 +32,8 @@ import { HeaderComponent } from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatTableModule} from "@angular/material/table";
 
 
 
@@ -43,7 +45,8 @@ import {MatListModule} from "@angular/material/list";
     NewsCardComponent,
     routingComponents,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,10 @@ import {MatListModule} from "@angular/material/list";
     NgOptimizedImage,
     MatExpansionModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
