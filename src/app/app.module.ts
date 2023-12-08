@@ -70,13 +70,14 @@ import {TokenInterceptor} from "./auth/token.interceptor";
     HttpClientModule
   ],
   providers: [AuthService,
-    AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    },],
-  bootstrap: [AppComponent, HomepageComponent, MovieCarouselComponent, RegisterComponent]
+    // AuthGuard,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true,
+    // },
+  ],
+  bootstrap: [AppComponent, MovieCarouselComponent]
 })
 export class AppModule {
 }

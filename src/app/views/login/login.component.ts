@@ -12,8 +12,8 @@ export class LoginComponent {
 
   private accessToken = "access_token"
 
-  username: string = "";
-  password: string = "";
+  username: string = "adam";
+  password: string = "dupadup123";
   message: string = "";
 
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private authService: AuthService) {
