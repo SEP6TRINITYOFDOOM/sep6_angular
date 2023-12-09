@@ -6,7 +6,6 @@
   <title>Home</title>
 </head>
   <body>
-
     <div class="container text-center">
       <!-- Stack the columns on mobile by making one full-width and the other half-width -->
       <div class="row">
@@ -15,15 +14,15 @@
           <app-movie-item class="inline-block"
             *ngFor="let trendingMovie of trendingMovies"
             [title]="trendingMovie.title"
-            [posterURL]="trendingMovie.posterURL"
+            [posterURL]="'https://image.tmdb.org/t/p/w500'+trendingMovie.path"
           />
         </div>
         <div class="col-xl-4 col-sm-12">
           <h2>Trending actors</h2>
-          <app-friend-item class="actor" 
+          <app-friend-item class="actor"
             *ngFor="let trendingActor of trendingActors"
-            [friendName]="trendingActor.friendName"
-            [profilePictureUrl]="trendingActor.profilePictureUrl"
+            [friendName]="trendingActor.name"
+            [profilePictureUrl]="'https://image.tmdb.org/t/p/w500'+trendingActor.path"
           />
         </div>
       </div>
