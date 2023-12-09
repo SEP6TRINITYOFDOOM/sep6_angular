@@ -18,7 +18,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
-import {MovieCarouselComponent} from "./components/movie-carousel/movie-carousel.component";
 import { NewsCardComponent } from './components/news-card/news-card.component';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -33,7 +32,6 @@ import {MatListModule} from "@angular/material/list";
 @NgModule({
   declarations: [
     AppComponent,
-    MovieCarouselComponent,
     SearchBarComponent,
     NewsCardComponent,
     routingComponents,
@@ -65,8 +63,14 @@ import {MatListModule} from "@angular/material/list";
     FormsModule,
     MatFormFieldModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-
+  providers: [
+    // AuthGuard,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true,
+    // },
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

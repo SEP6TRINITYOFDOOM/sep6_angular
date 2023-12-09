@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MovieItemComponent} from "../movie-item/movie-item.component";
 import {FriendItemComponent} from "../friend-item/friend-item.component";
 
