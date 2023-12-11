@@ -10,8 +10,10 @@ export class ActorsService {
 
   private url = "http://localhost:8080/actors/trending";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  getTrending(): Observable<Actor[]>{
+  getTrending(): Observable<Actor[]> {
     return this.http.get<Actor[]>(this.url);
+  }
 }
