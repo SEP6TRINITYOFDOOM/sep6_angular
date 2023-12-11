@@ -14,5 +14,4 @@ export class ActorsService {
 
   getTrending(): Observable<Actor[]>{
     return this.http.get<Actor[]>(this.url);
-  }
 }

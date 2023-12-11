@@ -8,7 +8,6 @@ import {MovieDetails} from "./Movie DTO/MovieDetails";
   providedIn: 'root'
 })
 export class MoviesService {
-
   private url : string = '';
 
   constructor(private http: HttpClient) { }

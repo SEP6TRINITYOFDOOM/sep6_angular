@@ -16,7 +16,6 @@ export class HomepageComponent {
 
   constructor(private moviesService: MoviesService, private actorService: ActorsService) {
   }
-
   public movies: Movie[] = [];
   public actors: Actor[] = [];
 
