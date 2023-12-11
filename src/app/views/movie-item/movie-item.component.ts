@@ -6,6 +6,6 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./movie-item.component.css']
 })
 export class MovieItemComponent {
-  @Input() title: string = "";
-  @Input() posterURL: string = "";
+  @Input() title: string = '';
+  @Input() posterURL: string = '';
 }

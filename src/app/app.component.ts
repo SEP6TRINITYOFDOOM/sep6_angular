@@ -10,9 +10,8 @@ export class AppComponent {
   title = 'sep6';
 
   open = false;
-
+  
   constructor() { }
-
 
 }
 

@@ -1,6 +1,5 @@
 import {importProvidersFrom, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -28,7 +27,10 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./auth/auth.service";
+import {AuthGuard} from "./auth/auth.guard";
+import {TokenInterceptor} from "./auth/token.interceptor";
 
 
 @NgModule({
@@ -67,8 +69,15 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     MatFormFieldModule,
     HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-
+  providers: [AuthService,
+    // AuthGuard,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true,
+    // },
+  ],
+  bootstrap: [AppComponent, MovieCarouselComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
