@@ -22,12 +22,14 @@
         <mat-label>Password</mat-label>
         <input matInput>
       </mat-form-field>
-      <button mat-raised-button color="primary">Sign in</button>
+      <button (click)="login()" mat-raised-button color="primary" >Sign in</button>
     </div>
 
     <div class="section no-account">
       <h1>No account yet?</h1>
-      <button mat-raised-button color="accent">Sign up</button>
+      <a routerLink="/register">
+      <button mat-raised-button color="accent" >Sign up</button>
+      </a>
     </div>
   </div>
   </div>

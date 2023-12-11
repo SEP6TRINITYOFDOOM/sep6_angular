@@ -4,20 +4,14 @@ import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {HomepageComponent} from './views/homepage/homepage.component';
 import {SearchBarComponent} from './components/search-bar/search-bar.component';
-import {LoginComponent} from './views/login/login.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import {ProfileComponent} from './views/profile/profile.component';
 import {MatTabsModule} from "@angular/material/tabs";
-import {MovieItemComponent} from './views/movie-item/movie-item.component';
 import {MatCardModule} from "@angular/material/card";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
-import {FriendItemComponent} from './views/friend-item/friend-item.component';
-import {AccountSettingsComponent} from './views/account-settings/account-settings.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
@@ -32,9 +26,10 @@ import { HeaderComponent } from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
-import { NavbarComponent } from './navbar/navbar.component';
-import {MatTableModule} from "@angular/material/table";
-
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./auth/auth.service";
+import {AuthGuard} from "./auth/auth.guard";
+import {TokenInterceptor} from "./auth/token.interceptor";
 
 
 @NgModule({
@@ -45,8 +40,7 @@ import {MatTableModule} from "@angular/material/table";
     NewsCardComponent,
     routingComponents,
     HeaderComponent,
-    SidenavListComponent,
-    NavbarComponent
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
@@ -72,12 +66,17 @@ import {MatTableModule} from "@angular/material/table";
     MatExpansionModule,
     FormsModule,
     MatFormFieldModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatTableModule
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-
+  providers: [AuthService,
+    // AuthGuard,
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true,
+    // },
+  ],
+  bootstrap: [AppComponent, MovieCarouselComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
