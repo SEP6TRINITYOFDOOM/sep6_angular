@@ -14,6 +14,7 @@ import {SpokenLanguage} from "../../service/Movie DTO/SpokenLanguage";
 })
 export class MovieDetailsComponent implements OnInit {
 
+
   @Input() id: string = '';
 
   constructor(private movieService: MoviesService) {
@@ -53,8 +54,6 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService.getMovie(this.id).subscribe(
       data => this.movieDetails = data
     );
-
-
 
   }
 }
