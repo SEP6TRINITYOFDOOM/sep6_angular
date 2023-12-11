@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {importProvidersFrom, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
@@ -17,7 +17,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
-import {MovieCarouselComponent} from "./components/movie-carousel/movie-carousel.component";
 import { NewsCardComponent } from './components/news-card/news-card.component';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -26,16 +25,16 @@ import { HeaderComponent } from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/http";
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptor} from "./auth/token.interceptor";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    MovieCarouselComponent,
     SearchBarComponent,
     NewsCardComponent,
     routingComponents,
@@ -76,7 +75,7 @@ import {TokenInterceptor} from "./auth/token.interceptor";
     //   multi: true,
     // },
   ],
-  bootstrap: [AppComponent, MovieCarouselComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
