@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Actor} from "./Actor DTO/Actor";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class ActorsService {
 
   constructor(private http: HttpClient) { }
 
-  getTrending(){
-    return this.http.get(this.url);
+  getTrending(): Observable<Actor[]>{
+    return this.http.get<Actor[]>(this.url);
   }
 }

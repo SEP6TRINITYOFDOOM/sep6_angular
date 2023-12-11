@@ -27,6 +27,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { ActorDetailsComponent } from './actor-details/actor-details.component';
 
 
 
@@ -37,7 +38,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     NewsCardComponent,
     routingComponents,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    ActorDetailsComponent
   ],
   imports: [
     BrowserModule,

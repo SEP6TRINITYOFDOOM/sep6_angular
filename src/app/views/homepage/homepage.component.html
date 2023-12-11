@@ -12,17 +12,17 @@
         <div class="col-xl-8 col-sm-12">
           <h2>Trending movies</h2>
           <app-movie-item class="inline-block"
-            *ngFor="let trendingMovie of trendingMovies"
+            *ngFor="let trendingMovie of movies"
             [title]="trendingMovie.title"
-            [posterURL]="'https://image.tmdb.org/t/p/w500'+trendingMovie.path"
+            [posterURL]="'https://image.tmdb.org/t/p/w500'+trendingMovie.poster_path"
           />
         </div>
         <div class="col-xl-4 col-sm-12">
           <h2>Trending actors</h2>
           <app-friend-item class="actor"
-            *ngFor="let trendingActor of trendingActors"
+            *ngFor="let trendingActor of actors"
             [friendName]="trendingActor.name"
-            [profilePictureUrl]="'https://image.tmdb.org/t/p/w500'+trendingActor.path"
+            [profilePictureUrl]="'https://image.tmdb.org/t/p/w500'+trendingActor.profile_path"
           />
         </div>
       </div>
