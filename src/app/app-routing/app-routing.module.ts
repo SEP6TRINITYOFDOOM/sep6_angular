@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'friend-item',      component: FriendItemComponent},
   { path: 'movie-item',       component: MovieItemComponent},
   { path: 'movie-details/:id',    component: MovieDetailsComponent},
-  { path: 'actor-details/:id', component: ActorDetailsComponent},
+  { path: 'actor-details', component: ActorDetailsComponent},
   { path: 'search', component: SearchResultComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
