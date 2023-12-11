@@ -1,11 +1,11 @@
 import {Component, inject, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {MoviesService} from "../../services/movies.service";
-import {MovieDetails} from "../../services/Movie DTO/MovieDetails";
-import {Genre} from "../../services/Movie DTO/Genre";
-import {ProductionCompany} from "../../services/Movie DTO/ProductionCompany";
-import {ProductionCountry} from "../../services/Movie DTO/ProductionCountry";
-import {SpokenLanguage} from "../../services/Movie DTO/SpokenLanguage";
+import {MoviesService} from "../../service/movies.service";
+import {MovieDetails} from "../../service/Movie DTO/MovieDetails";
+import {Genre} from "../../service/Movie DTO/Genre";
+import {ProductionCompany} from "../../service/Movie DTO/ProductionCompany";
+import {ProductionCountry} from "../../service/Movie DTO/ProductionCountry";
+import {SpokenLanguage} from "../../service/Movie DTO/SpokenLanguage";
 
 @Component({
   selector: 'app-movie-details',
