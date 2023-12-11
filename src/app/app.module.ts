@@ -26,7 +26,10 @@ import { HeaderComponent } from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./auth/auth.service";
+import {AuthGuard} from "./auth/auth.guard";
+import {TokenInterceptor} from "./auth/token.interceptor";
 import { ActorDetailsComponent } from './actor-details/actor-details.component';
 
 
@@ -67,7 +70,7 @@ import { ActorDetailsComponent } from './actor-details/actor-details.component';
     MatFormFieldModule,
     HttpClientModule
   ],
-  providers: [
+  providers: [AuthService,
     // AuthGuard,
     // {
     //   provide: HTTP_INTERCEPTORS,
@@ -77,4 +80,5 @@ import { ActorDetailsComponent } from './actor-details/actor-details.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
