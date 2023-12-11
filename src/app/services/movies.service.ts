@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Movie} from "./Movie DTO/Movie";
+import {Observable} from "rxjs";
+import {MovieDetails} from "./Movie DTO/MovieDetails";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
-
-  private url = 'http://localhost:8080/movies/trending';
+  private url : string = '';
 
   constructor(private http: HttpClient) { }
 
-  getTrending() {
+  getMovie(id:string): Observable<MovieDetails> {
+    this.url = 'http://localhost:8080/movies?id=' + id;
+    return this.http.get<MovieDetails>(this.url);
+  }
 
-    const header: HttpHeaders = new HttpHeaders({
-      Authorization: 'Bearer JWT-token'
-    });
-
-    return this.http.get(this.url);
+  getTrending(): Observable<Movie[]> {
+    this.url = 'http://localhost:8080/movies/trending';
+    return this.http.get<Movie[]>(this.url);
   }
 }

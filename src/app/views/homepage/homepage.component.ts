@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MovieItemComponent} from "../movie-item/movie-item.component";
 import {FriendItemComponent} from "../friend-item/friend-item.component";
 import {HttpClient} from "@angular/common/http";
 import {MoviesService} from "../../services/movies.service";
 import {ActorsService} from "../../services/actors.service";
+import {Movie} from "../../services/Movie DTO/Movie";
+import {Actor} from "../../services/Actor DTO/Actor";
 
 @Component({
   selector: 'app-homepage',
@@ -14,18 +16,16 @@ export class HomepageComponent {
 
   constructor(private moviesService: MoviesService, private actorService: ActorsService) {
   }
+  public movies: Movie[] = [];
+  public actors: Actor[] = [];
 
-  trendingMovies : any;
-  trendingActors : any;
   ngOnInit() {
     this.moviesService.getTrending().subscribe(
-      (response) => { this.trendingMovies = response; },
-      (error) => { console.log(error); }
+      data=> this.movies = data
     );
 
     this.actorService.getTrending().subscribe(
-      (response) => { this.trendingActors = response; },
-      (error) => { console.log(error); }
+      data => this.actors = data
     );
   }
 

@@ -17,7 +17,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatMenuModule} from "@angular/material/menu";
-import {MovieCarouselComponent} from "./components/movie-carousel/movie-carousel.component";
 import { NewsCardComponent } from './components/news-card/news-card.component';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -31,17 +30,19 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptor} from "./auth/token.interceptor";
+import { ActorDetailsComponent } from './actor-details/actor-details.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MovieCarouselComponent,
     SearchBarComponent,
     NewsCardComponent,
     routingComponents,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    ActorDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +78,7 @@ import {TokenInterceptor} from "./auth/token.interceptor";
     //   multi: true,
     // },
   ],
-  bootstrap: [AppComponent, MovieCarouselComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
