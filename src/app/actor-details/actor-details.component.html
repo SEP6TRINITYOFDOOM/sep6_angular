@@ -1,4 +1,57 @@
-<p>actor-details works!</p>
+<mat-tab-group>
+  <mat-tab label="Actor">
+    <br>
+    <div style="width: 100%">
+<img class="img1" src="https://image.tmdb.org/t/p/w500{{actorDetails.profile_path}}">
+    <table class="table1">
+      <tr>
+        <td>Name</td>
+        <td>actorDetails.name</td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td>Gender</td>
+        <td>actorDetails.gender</td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td>Birthday</td>
+        <td>actorDetails.birthday</td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td>Country</td>
+        <td>actorDetails.country</td>
+      </tr>
+      <br>
+      <br>
+      <tr>
+        <td>Actor type</td>
+        <td>actorDetails.known_for_department</td>
+      </tr>
+    </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Biography">
+    <br>
+    actorDetails.biography
+  </mat-tab>
+  <mat-tab label="Other">
+    <div style="margin-top:10%; width: 100%; text-align: center; font-size: xx-large">
 
-{{id}}
-
+    <p>Home Link: <a href="http://localhost:4200/home">homepage</a></p>
+     <br>
+      <br>
+      <br>
+      <hr>
+      <br>
+      <br>
+      <br>
+    <p>His movie:</p>
+    <img src="https://image.tmdb.org/t/p/w500{{actorDetails.movie_path}}">
+  </div>
+  </mat-tab>
+</mat-tab-group>
