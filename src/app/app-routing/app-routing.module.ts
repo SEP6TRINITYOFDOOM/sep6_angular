@@ -8,7 +8,7 @@ import {ProfileComponent} from "../views/profile/profile.component";
 import {MovieItemComponent} from "../views/movie-item/movie-item.component";
 import {FriendItemComponent} from "../views/friend-item/friend-item.component";
 import {AccountSettingsComponent} from "../views/account-settings/account-settings.component";
-import {ActorDetailsComponent} from "../actor-details/actor-details.component";
+import {ActorDetailsComponent} from "../views/actor-details/actor-details.component";
 import {SearchResultComponent} from "../views/search-result/search-result.component";
 
 const routes: Routes = [
