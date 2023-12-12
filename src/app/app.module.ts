@@ -30,8 +30,7 @@ import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptor} from "./auth/token.interceptor";
 import { ActorDetailsComponent } from './actor-details/actor-details.component';
-
-
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -68,7 +67,8 @@ import { ActorDetailsComponent } from './actor-details/actor-details.component';
     MatExpansionModule,
     FormsModule,
     MatFormFieldModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [AuthService,
     // AuthGuard,

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
-import {DomSanitizer} from '@angular/platform-browser';
-import {AuthService} from "../../services/auth.service";
+import {MatDialogRef} from "@angular/material/dialog";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -12,36 +12,22 @@ export class LoginComponent {
 
   private accessToken = "access_token"
 
-  username: string = "adam";
-  password: string = "dupadup123";
-  message: string = "";
-
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private authService: AuthService) {
-    this.registerIcons();
-  }
+  username: string = "";
+  password: string = "";
 
 
-  private registerIcons() {
-    this.matIconRegistry.addSvgIcon(
-      'apple-logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icon/apple.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'fb-logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/facebook.svg')
-    );
-    this.matIconRegistry.addSvgIcon(
-      'google-logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/google.svg')
-    );
+  constructor(private authService: AuthService, private dialogRef: MatDialogRef<LoginComponent>) {
   }
 
   public login(): void {
     sessionStorage.removeItem(this.accessToken)
-
     this.authService.login(this.username, this.password).subscribe({
-      next: (token) =>{
+      next: (token) => {
         sessionStorage.setItem(this.accessToken, token)
+        this.dialogRef.close()
+      },
+      error: (error)=>{
+        console.log(error)
       }
     })
   }

@@ -1,26 +1,26 @@
 <ng-container>
-  <div class="container-fluid">
+
   <div class="layout">
     <div class="section">
       <h1>Login to Your Account</h1>
       <div class="layout-horizontal fabs">
-        <button class="fab" mat-fab color="primary">
-          <mat-icon>apple-logo</mat-icon>
-        </button>
-        <button class="fab" mat-fab color="primary">
-          <mat-icon>google-logo</mat-icon>
-        </button>
-        <button class="fab" mat-fab color="primary">
-          <mat-icon>fb-logo</mat-icon>
-        </button>
+<!--        <button class="fab" mat-fab color="primary">-->
+<!--          <mat-icon>apple-logo</mat-icon>-->
+<!--        </button>-->
+<!--        <button class="fab" mat-fab color="primary">-->
+<!--          <mat-icon>google-logo</mat-icon>-->
+<!--        </button>-->
+<!--        <button class="fab" mat-fab color="primary">-->
+<!--          <mat-icon>fb-logo</mat-icon>-->
+<!--        </button>-->
       </div>
       <mat-form-field class="example-full-width">
         <mat-label>E-mail</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="username">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="password">
       </mat-form-field>
       <button (click)="login()" mat-raised-button color="primary" >Sign in</button>
     </div>
@@ -32,5 +32,5 @@
       </a>
     </div>
   </div>
-  </div>
+
 </ng-container>

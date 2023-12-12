@@ -18,12 +18,13 @@ export class AuthService {
 
   login(username: string, password: string): Observable<string> {
     const httpOptions = {
-      headers: {
-        Authorization: 'Basic ' + window.btoa(username + ':' + password)
-      },
       responseType: 'text' as 'text',
     };
-    return this.http.post("http://localhost:8080/api/auth", null, httpOptions);
+    const body = {
+      username: username,
+      password: password
+    }
+    return this.http.post("http://localhost:8080/api/auth/login", body, httpOptions);
   }
 
   logout() {
