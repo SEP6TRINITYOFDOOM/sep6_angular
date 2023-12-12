@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActorDetails} from "../service/Actor DTO/ActorDetails";
 import {ActorService} from "../components/Server/actor.service";
-import {MoviesService} from "../service/movies.service";
 
 
 @Component({
