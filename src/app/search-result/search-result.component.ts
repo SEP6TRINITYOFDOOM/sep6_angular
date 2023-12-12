@@ -7,6 +7,7 @@ import { SearchService } from '../components/ServiceSearch/search.service';
 })
 export class SearchResultComponent implements OnInit {
 
+
   panelOpenState = false;
   isContentVisibleButton: boolean = false;
   isContentVisibleComedy: boolean = false;
@@ -88,4 +89,5 @@ export class SearchResultComponent implements OnInit {
     this.isContentVisibleButton = false;
     this.isContentVisibleAllMovie = true;
 }
+
 }

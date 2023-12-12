@@ -1,0 +1,14 @@
+.img1{
+  width: 400px;
+  height: 500px;
+  float: left;
+  margin-left: 5%;
+}
+
+.table1{
+  width: 40%;
+  margin-left: 45%;
+  text-align: center;
+  line-height: 38px;
+  font-size: large;
+}

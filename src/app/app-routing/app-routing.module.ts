@@ -9,6 +9,7 @@ import {MovieItemComponent} from "../views/movie-item/movie-item.component";
 import {FriendItemComponent} from "../views/friend-item/friend-item.component";
 import {AccountSettingsComponent} from "../views/account-settings/account-settings.component";
 import {SearchResultComponent} from "../search-result/search-result.component";
+import {ActorDetailsComponent} from "../actor-details/actor-details.component";
 
 const routes: Routes = [
   { path: 'home',             component: HomepageComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'movie-item',       component: MovieItemComponent},
   { path: 'movie-details/:id',    component: MovieDetailsComponent},
   { path: 'search', component: SearchResultComponent},
+  { path: 'actor-details', component: ActorDetailsComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
@@ -40,4 +42,5 @@ export const routingComponents = [
   FriendItemComponent,
   MovieItemComponent,
   SearchResultComponent,
-  MovieDetailsComponent];
+  MovieDetailsComponent,
+  ActorDetailsComponent];
