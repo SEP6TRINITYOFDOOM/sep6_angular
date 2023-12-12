@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="search-result.component.css">
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <title>Title</title>
+
+</head>
+<body>
+
+<mat-tab-group style="background-color: #303030">
+  <mat-tab label="Movies">
+  <br>
+    <mat-expansion-panel (click)="refreshGenres()">
+      <mat-expansion-panel-header >
+        <mat-panel-title class="center-text">
+          Movies Categories
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <button *ngFor="let genreId of this.searchResult.genres" class="dropbtn" [routerLink]="['/search', searchParam]" [queryParams]="{genre: genreId}" (click)="sortByGenre(genreId)" >{{this.movieGenreDictionary.get(genreId)}}</button>
+      </ng-template>
+    </mat-expansion-panel>
+    <br>
+    <div class="outside">
+        <a *ngFor="let movieSearchResult of this.searchResult.movieResults" [href]="'movie-details/' + movieSearchResult.id">
+        <app-movie-item [title]="movieSearchResult.title" [posterURL]="'https://image.tmdb.org/t/p/w500'+movieSearchResult.poster_path"/>
+        </a>
+    </div>
+  </mat-tab >
+  <mat-tab label="Actor">
+    <div class="outside">
+      <app-movie-item
+        *ngFor="let actorSearchResult of this.searchResult.actorResults"
+        [title]="actorSearchResult.name"
+        [posterURL]="actorSearchResult.profile_path"/>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+<script>
+
+</script>
+</body>
+</html>
+

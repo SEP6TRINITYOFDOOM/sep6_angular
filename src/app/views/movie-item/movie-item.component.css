@@ -34,3 +34,7 @@
   box-sizing: border-box;
   text-align: center;
 }
+
+img[src="https://image.tmdb.org/t/p/w500null"] {
+  display: none;
+}
