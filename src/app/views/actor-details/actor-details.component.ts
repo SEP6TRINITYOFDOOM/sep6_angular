@@ -16,25 +16,28 @@ export class ActorDetailsComponent implements OnInit{
   }
 
   public actorDetails : ActorDetails = new class implements ActorDetails {
+    also_known_as: string[] = [];
     adult: boolean = false;
     biography: string = "";
     birthday: string = "";
     deathday: string = "";
-    gender: string = "";
+    gender: number = 0;
     homepage: string = "";
     id: number = 0;
-    imdb_id: number = 0;
+    imdb_id: string = "";
     known_for_department: string = "";
     name: string = "";
     place_of_birth: string = "";
     popularity: number = 0;
     profile_path: string = "";
-    country: string = "";
-    movie_path: string = "";
   }
 
   ngOnInit(): void {
+    console.log("ID=" + this.id);
 
+    this.actorService.getActorDetails(this.id).subscribe(
+      data => this.actorDetails = data
+    );
   }
 
 }

@@ -34,10 +34,11 @@
   </mat-tab >
   <mat-tab label="Actor">
     <div class="outside">
-      <app-movie-item
-        *ngFor="let actorSearchResult of this.searchResult.actorResults"
-        [title]="actorSearchResult.name"
-        [posterURL]="actorSearchResult.profile_path"/>
+      <a *ngFor="let actorSearchResult of this.searchResult.actorResults" [href]="'actor-details/' + actorSearchResult.id">
+        <app-movie-item
+          [title]="actorSearchResult.name"
+          [posterURL]="actorSearchResult.profile_path"/>
+      </a>
     </div>
   </mat-tab>
 </mat-tab-group>

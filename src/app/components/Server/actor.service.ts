@@ -13,7 +13,7 @@ export class ActorService {
   constructor(private http: HttpClient) { }
 
   getActorDetails(id: string): Observable<ActorDetails> {
-    this.url = 'http://localhost:8080/actors?id=' + id;
+    this.url = 'http://localhost:8080/actor/' + id;
     return this.http.get<ActorDetails>(this.url);
   }
 }

@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: 'account-settings', component: AccountSettingsComponent},
   { path: 'friend-item',      component: FriendItemComponent},
   { path: 'movie-item',       component: MovieItemComponent},
-  { path: 'movie-details/:id',    component: MovieDetailsComponent},
-  { path: 'actor-details', component: ActorDetailsComponent},
+  { path: 'movie-details/:id', component: MovieDetailsComponent},
+  { path: 'actor-details/:id', component: ActorDetailsComponent},
   { path: 'search/:searchParam', component: SearchResultComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
