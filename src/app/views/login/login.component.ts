@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {MatIconRegistry} from '@angular/material/icon';
-import {MatDialogRef} from "@angular/material/dialog";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../../auth/auth.service";
+import {RegisterComponent} from "../register/register.component";
 
 @Component({
   selector: 'app-login',
@@ -10,26 +10,29 @@ import {AuthService} from "../../auth/auth.service";
 })
 export class LoginComponent {
 
-  private accessToken = "access_token"
-
   username: string = "";
   password: string = "";
 
 
-  constructor(private authService: AuthService, private dialogRef: MatDialogRef<LoginComponent>) {
+  constructor(private authService: AuthService, private dialogRef: MatDialogRef<LoginComponent>, private dialog: MatDialog) {
   }
 
   public login(): void {
-    sessionStorage.removeItem(this.accessToken)
+    this.authService.removeToken()
     this.authService.login(this.username, this.password).subscribe({
       next: (token) => {
-        sessionStorage.setItem(this.accessToken, token)
+        this.authService.setToken(token)
         this.dialogRef.close()
       },
       error: (error)=>{
         console.log(error)
       }
     })
+  }
+
+  public openRegister(){
+    this.dialogRef.close()
+    this.dialog.open(RegisterComponent, {})
   }
 
 

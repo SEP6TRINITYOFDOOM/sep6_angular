@@ -11,14 +11,17 @@
   <div fxFlex fxHide.xs>
     <app-search-bar></app-search-bar>
   </div>
-  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs *ngIf="!isLoggedIn()">
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
       <li>
-        <a routerLink="/register">Register</a>
+        <button mat-button (click)="openRegister()">Register</button>
       </li>
       <li>
         <button mat-button (click)="openLogin()">Login</button>
       </li>
     </ul>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs *ngIf="isLoggedIn()">
+    <button mat-button (click)="logout()">Logout</button>
   </div>
 </mat-toolbar>

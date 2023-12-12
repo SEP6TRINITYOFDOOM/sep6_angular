@@ -1,40 +1,27 @@
 <ng-container>
-  <div class="container-fluid">
-    <div class="layout">
-      <div class="section">
-        <h1>Create an Account</h1>
-        <div class="layout-horizontal fabs">
-          <button class="fab" mat-fab color="primary">
-            <mat-icon>apple-logo</mat-icon>
-          </button>
-          <button class="fab" mat-fab color="primary">
-            <mat-icon>google-logo</mat-icon>
-          </button>
-          <button class="fab" mat-fab color="primary">
-            <mat-icon>fb-logo</mat-icon>
-          </button>
-        </div>
-        <mat-form-field class="example-full-width">
-          <mat-label>Username</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>E-mail</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Password</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <button mat-raised-button color="primary">Sign up</button>
+  <div class="layout">
+    <div class="section main-section">
+      <h1>Create an Account</h1>
+      <div class="layout-horizontal fabs">
       </div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="username">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>E-mail</mat-label>
+        <input matInput [(ngModel)]="email">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="register()">Sign up</button>
+    </div>
 
-      <div class="section no-account">
-        <h1>No account yet?</h1>
-        <a routerLink="/login">
-          <button mat-raised-button color="accent" >Sign in</button>
-        </a>
-      </div>
+    <div class="section no-account">
+      <h1>Already registered?</h1>
+        <button mat-raised-button color="accent" (click)="openLogin()">Sign in</button>
     </div>
   </div>
 </ng-container>
