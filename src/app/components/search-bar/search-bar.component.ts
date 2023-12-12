@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import { Router, NavigationEnd} from '@angular/router';
 import {filter} from 'rxjs/operators';
-import { SearchService } from '../ServiceSearch/search.service';
+import { SearchService } from '../../services/search.service';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -22,19 +22,17 @@ export class SearchBarComponent {
 
   search(): void {
 
-    this.searchService.sendSearchTerm(this.searchTerm);
+    const inputElement = <HTMLInputElement>document.getElementById("search-field");
 
-
-    let expectedRoute = "/search";
+    let expectedRoute = "/search/" + inputElement.value;
 
 
     let currentRoute = this.router.url;
 
 
     if (currentRoute !== expectedRoute) {
-      this.router.navigate([expectedRoute]);
+      this.router.navigate(['/']).then(() => { this.router.navigate([expectedRoute]); })
     } else {
-
       this.handleNavigation();
     }
   }
