@@ -1,5 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import { SearchService } from '../../components/ServiceSearch/search.service';
+import {Component, Input, OnInit} from '@angular/core';
+import { SearchService } from '../../services/search.service';
+import {SearchResult} from "../../services/Search DTO/SearchResult";
+import {Actor} from "../../services/Actor DTO/Actor";
+import {Movie} from "../../services/Movie DTO/Movie";
+import {Genre} from "../../services/Movie DTO/Genre";
+import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
@@ -7,85 +12,83 @@ import { SearchService } from '../../components/ServiceSearch/search.service';
 })
 export class SearchResultComponent implements OnInit {
 
-  panelOpenState = false;
-  isContentVisibleButton: boolean = false;
-  isContentVisibleComedy: boolean = false;
-  isContentVisibleAction: boolean = false;
-  isContentVisibleRomance: boolean = false;
-  isContentVisibleHorror: boolean = false;
-  isContentVisibleAllMovie: boolean = true;
-  isContentVisibleSearchImage: boolean = false;
+  @Input() searchParam: any = '';
+  public searchQueryParam: any = '';
 
-  ContentVisibility(): void {
-    this.isContentVisibleComedy = true;
-    this.isContentVisibleAction = false;
-    this.isContentVisibleRomance = false;
-    this.isContentVisibleHorror = false;
+  constructor(
+    private searchService: SearchService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  public searchResult : SearchResult = new class implements SearchResult {
+    actorResults: Actor[] = [];
+    movieResults: Movie[] = []
+    genres: number[] = [];
   }
 
-  ContentVisibility1(): void {
-    this.isContentVisibleAction = true;
-    this.isContentVisibleComedy = false;
-    this.isContentVisibleRomance = false;
-    this.isContentVisibleHorror = false;
-  }
+  ngOnInit() {
 
-  ContentVisibility2(): void {
-    this.isContentVisibleRomance = true;
-    this.isContentVisibleComedy = false;
-    this.isContentVisibleAction = false;
-    this.isContentVisibleHorror = false;
-  }
+    this.searchParam = this.activatedRoute.snapshot.paramMap.get("searchParam");
+    this.searchQueryParam = this.activatedRoute.snapshot.queryParamMap.get("genre");
 
-  ContentVisibility3(): void {
-    this.isContentVisibleHorror = true;
-    this.isContentVisibleComedy = false;
-    this.isContentVisibleAction = false;
-    this.isContentVisibleRomance = false;
-  }
-
-  searchUrl: string = '';
-  searchTitle: string = '';
-  searchUrl1: string = '';
-  searchTitle1: string = '';
-  searchUrl2: string = '';
-  searchTitle2: string = '';
-
-  constructor(private searchService: SearchService) {
-  }
-
-    ngOnInit(): void {
-
-      this.searchService.searchObservable$.subscribe((searchResults) => {
-        const firstResult = (searchResults as { title: string; url: string }[])[0];
-        const secondResult = (searchResults as { title: string; url: string }[])[1];
-        const thirdResult = (searchResults as { title: string; url: string }[])[2];
-        if (firstResult && secondResult && thirdResult) {
-          this.searchTitle = firstResult.title;
-          this.searchUrl = firstResult.url;
-          this.searchTitle1 = secondResult.title;
-          this.searchUrl1 = secondResult.url;
-          this.searchTitle2 = thirdResult.title;
-          this.searchUrl2 = thirdResult.url;
-          this.isContentVisibleSearchImage = true;
-
-          if (this.searchUrl !== '') {
-            this.isContentVisibleAllMovie = false;
-            this.isContentVisibleButton = true;
-          }
-        } else {
-          this.searchTitle = '';
-          this.searchUrl = '';
-          this.isContentVisibleSearchImage = false;
-          this.isContentVisibleAllMovie = true;
-          this.isContentVisibleButton = false;
-        }
-      });
+    if(this.searchQueryParam == null){
+      this.searchService.getSearchResult(this.searchParam).subscribe(
+        data => this.searchResult = data
+      );
+    } else {
+      this.searchService.searchWithGenre(this.searchParam, this.searchQueryParam).subscribe(
+        data => this.searchResult = data
+      );
     }
+  }
 
-    BackToMovie(){
-    this.isContentVisibleSearchImage = false;
-    this.isContentVisibleButton = false;
-    this.isContentVisibleAllMovie = true;
-}
+  sortByGenre(genreId: number){
+    this.router.navigate(['/','search',this.searchParam], {
+      queryParams: { genre: genreId}
+    });
+    window.location.replace(location.pathname + "?genre=" + genreId);
+  }
+
+  private handleNavigation(): void {
+
+    console.log('Navigation completed. Run your code here.');
+  }
+
+  public genre_ids : number[] = [];
+
+  public movieGenreDictionary: Map<number, string> = new Map([
+    [28,'Action'],
+    [12,'Adventure'],
+    [16,'Animation'],
+    [35,'Comedy'],
+    [80,'Crime'],
+    [99,'Documentary'],
+    [18,'Drama'],
+    [10751,'Family'],
+    [14,'Fantasy'],
+    [36,'History'],
+    [27,'Horror'],
+    [10402,'Music'],
+    [9648,'Mystery'],
+    [10749,'Romance'],
+    [878,'Science Fiction'],
+    [10770,'TV Movie'],
+    [53,'Thriller'],
+    [10752,'War'],
+    [37,'Western']
+  ]);
+
+  refreshGenres(){
+    for (let i = 0; i < this.searchResult.movieResults.length; i++) {
+      for (let j = 0; j < this.searchResult.movieResults[i].genre_ids[j]; j++) {
+        if(!this.genre_ids.some(el => el === this.searchResult.movieResults[i].genre_ids[j])) {
+          this.genre_ids.push(this.searchResult.movieResults[i].genre_ids[j]);
+        }
+      }
+    }
+  }
+
+
+
 }
