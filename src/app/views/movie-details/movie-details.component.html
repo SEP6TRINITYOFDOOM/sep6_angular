@@ -1,71 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Three Columns Page</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="movie-details.component.css">
-</head>
-<body>
+<mat-tab-group>
+  <mat-tab label="Movie overview">
 
-<div class="row">
-  <div class="column">
-    <img src="https://image.tmdb.org/t/p/w500{{movieDetails.poster_path}}" alt="Movie Poster">
-    <table>
-      <tr>
-        <td><button class="button button-1">1</button></td>
-        <td><button class="button button-2">2</button></td>
-        <td><button class="button button-3">3</button></td>
-        <td><button class="button button-4">4</button></td>
-        <td><button class="button button-5">5</button></td>
-      </tr>
-    </table>
-    <div class="centered-paragraph">
-      <p><b>How much did you enjoy this movie?</b></p>
-    </div>
-  </div>
-  <div class="column">
-    <h2>{{movieDetails.title}}</h2>
-    <table>
-      <tr>
-        <td>Rating</td>
-        <td>9.0/10</td>
-      </tr>
-      <tr>
-        <td>Release Year</td>
-        <td>{{movieDetails.release_date.slice(0,4)}}</td>
-      </tr>
-      <tr>
-        <td>Director/s</td>
-        <td>David Fincher</td>
-      </tr>
-      <tr>
-        <td>Star/s</td>
-        <td>Brad Pitt, Edward Norton</td>
-      </tr>
-      <tr>
-        <td>Genres</td>
-        <td><p *ngFor="let genre of this.movieDetails.genres">{{genre.name}}</p></td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td colspan="2"><b>Overview</b></td>
-      </tr>
-      <tr>
-        <td colspan="2">{{this.movieDetails.overview}}</td>
-      </tr>
-    </table>
-  </div>
-  <div class="column">
-    <h2>Comments</h2>
-    <p></p>
-    <div class="input-container">
-      <input type="text" class="input-field" placeholder="Type here...">
-      <button class="submit-button">></button>
-    </div>
-  </div>
-</div>
+    <mat-card class="example-card">
+      <mat-card-header>
+
+        <mat-card-title-group>
+            <mat-card-title>
+              <div style="display:inline-block;">
+                {{movieDetails.title}}
+              </div>
+              <div style="display:inline-block; float: right; margin-right: 2em;">
+                <button mat-icon-button *ngFor="let star of stars; index as i" (click)="rateMovie(star)">
+                  <mat-icon color="primary">star</mat-icon>
+                </button>
+              </div>
+            </mat-card-title>
+          <mat-card-subtitle style="color: yellow">
+            Rating {{movieDetails.vote_average.toFixed(2)}}/10
+          </mat-card-subtitle>
+          <mat-card-subtitle style="color: white">
+            {{movieDetails.overview}}
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            <div style="display:inline-block; margin-right: 10px; color: white">
+              Directed by:
+            </div>
+            <div style="display:inline-block;" *ngFor="let person of movieCredits.crew">
+              <p *ngIf="person.job === 'Director'">
+                {{person.name}}
+              </p>
+            </div>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            <div style="display:inline-block; margin-right: 10px; color: white;">
+              Genres:
+            </div>
+            <div style="display:inline-block; margin-right: 10px;" *ngFor="let genre of this.movieDetails.genres">
+              • {{genre.name}}
+            </div>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            <div style="display:inline-block; margin-right: 10px; color: white;">
+              Released:
+            </div>
+            <div style="display:inline-block;">
+              {{movieDetails.release_date.slice(0,4)}}
+            </div>
+          </mat-card-subtitle>
+          <mat-card-subtitle>
+            <br>
+            <br>
+            <h2 style="color: white;">Comments</h2>
+            <p></p>
+            <div class="input-container">
+              <input type="text" class="input-field" placeholder="Type here...">
+              <button mat-button color="accent" class="submit-button">></button>
+            </div>
+          </mat-card-subtitle>
+          <img mat-card-xl-image src="https://image.tmdb.org/t/p/w500{{movieDetails.poster_path}}" >
+        </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Cast and Crew">
+    <mat-tab-group>
+      <mat-tab label="Cast">
+        <div class="actor-grid">
+          <a *ngFor="let cast of this.movieCredits.cast" [href]="'actor-details/' + cast.id">
+            <app-movie-item [title]="cast.name" [posterURL]="'https://image.tmdb.org/t/p/w500'+cast.profile_path" [character]="'Plays as ' + cast.character"/>
+          </a>
+        </div>
+      </mat-tab>
+      <mat-tab label="Crew">
+        <div class="actor-grid">
+          <a *ngFor="let crew of this.movieCredits.crew" [href]="'actor-details/' + crew.id">
+            <app-movie-item [title]="crew.name" [posterURL]="'https://image.tmdb.org/t/p/w500'+crew.profile_path" [character]="crew.job"/>
+          </a>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-tab>
+</mat-tab-group>

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Movie} from "./Movie DTO/Movie";
 import {Observable} from "rxjs";
 import {MovieDetails} from "./Movie DTO/MovieDetails";
+import {MovieCredits} from "./Movie DTO/MoviesCredits";
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,10 @@ export class MoviesService {
   getTrending(): Observable<Movie[]> {
     this.url = 'http://localhost:8080/movies/trending';
     return this.http.get<Movie[]>(this.url);
+  }
+
+  getCredits(id:string): Observable<MovieCredits> {
+    this.url = 'http://localhost:8080/movie/' + id + "/credits"
+    return this.http.get<MovieCredits>(this.url);
   }
 }

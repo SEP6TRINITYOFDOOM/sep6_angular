@@ -12,3 +12,15 @@
   line-height: 38px;
   font-size: large;
 }
+
+img{
+  height: 520px;
+  width:auto;
+}
+
+.movie-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(20%), 1fr));
+  width: 80%;
+  margin: 0 auto;
+}

@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {MoviesService} from "../../services/movies.service";
 import {MovieDetails} from "../../services/Movie DTO/MovieDetails";
@@ -6,6 +6,10 @@ import {Genre} from "../../services/Movie DTO/Genre";
 import {ProductionCompany} from "../../services/Movie DTO/ProductionCompany";
 import {ProductionCountry} from "../../services/Movie DTO/ProductionCountry";
 import {SpokenLanguage} from "../../services/Movie DTO/SpokenLanguage";
+import {MovieCredits} from "../../services/Movie DTO/MoviesCredits";
+import {Cast} from "../../services/Movie DTO/Cast";
+import {Crew} from "../../services/Movie DTO/Crew";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-movie-details',
@@ -14,8 +18,9 @@ import {SpokenLanguage} from "../../services/Movie DTO/SpokenLanguage";
 })
 export class MovieDetailsComponent implements OnInit {
 
-
   @Input() id: string = '';
+
+  public stars: number[] = [1,2,3,4,5,6,7,8,9,10];
 
   constructor(private movieService: MoviesService) {
   }
@@ -48,6 +53,12 @@ export class MovieDetailsComponent implements OnInit {
     vote_count: number = 0;
   }
 
+  public movieCredits : MovieCredits = new class implements MovieCredits {
+    cast: Cast[] = [];
+    crew: Crew[] = [];
+    id: number = 0;
+  }
+
   ngOnInit() {
     console.log("ID=" + this.id);
 
@@ -55,5 +66,14 @@ export class MovieDetailsComponent implements OnInit {
       data => this.movieDetails = data
     );
 
+    this.movieService.getCredits(this.id).subscribe(
+      data => this.movieCredits = data
+    );
+
   }
+
+  rateMovie(rating: number){
+    console.log(rating);
+  }
+
 }

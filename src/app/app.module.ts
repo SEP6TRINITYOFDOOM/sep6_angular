@@ -30,6 +30,7 @@ import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptor} from "./auth/token.interceptor";
 import { ActorDetailsComponent } from './views/actor-details/actor-details.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 
@@ -44,32 +45,33 @@ import { ActorDetailsComponent } from './views/actor-details/actor-details.compo
     SidenavListComponent,
     ActorDetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    MatTabsModule,
-    MatCardModule,
-    CommonModule,
-    MatSelectModule,
-    MatGridListModule,
-    MatMenuModule,
-    MatButtonToggleModule,
-    MatToolbarModule,
-    RouterLink,
-    RouterLinkActive,
-    MatSidenavModule,
-    AppRoutingModule,
-    FlexLayoutModule,
-    MatListModule,
-    NgOptimizedImage,
-    MatExpansionModule,
-    FormsModule,
-    MatFormFieldModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatIconModule,
+        MatTabsModule,
+        MatCardModule,
+        CommonModule,
+        MatSelectModule,
+        MatGridListModule,
+        MatMenuModule,
+        MatButtonToggleModule,
+        MatToolbarModule,
+        RouterLink,
+        RouterLinkActive,
+        MatSidenavModule,
+        AppRoutingModule,
+        FlexLayoutModule,
+        MatListModule,
+        NgOptimizedImage,
+        MatExpansionModule,
+        FormsModule,
+        MatFormFieldModule,
+        HttpClientModule,
+        MatTooltipModule
+    ],
   providers: [AuthService,
     // AuthGuard,
     // {

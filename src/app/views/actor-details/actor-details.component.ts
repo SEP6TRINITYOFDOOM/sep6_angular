@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActorDetails} from "../../services/Actor DTO/ActorDetails";
 import {ActorService} from "../../components/Server/actor.service";
+import {MovieCredits} from "../../services/Movie DTO/MoviesCredits";
+import {Cast} from "../../services/Movie DTO/Cast";
+import {Crew} from "../../services/Movie DTO/Crew";
 
 
 @Component({
@@ -32,11 +35,21 @@ export class ActorDetailsComponent implements OnInit{
     profile_path: string = "";
   }
 
+  public featuredIn : MovieCredits = new class implements MovieCredits {
+    cast: Cast[] = [];
+    crew: Crew[] = [];
+    id: number = 0;
+  }
+
+
   ngOnInit(): void {
     console.log("ID=" + this.id);
 
     this.actorService.getActorDetails(this.id).subscribe(
       data => this.actorDetails = data
+    );
+    this.actorService.getFeaturedIn(this.id).subscribe(
+      data => this.featuredIn = data
     );
   }
 

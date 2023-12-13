@@ -1,48 +1,44 @@
 <mat-tab-group>
   <mat-tab label="Actor">
     <br>
-    <div style="width: 100%">
-<img class="img1" src="https://image.tmdb.org/t/p/w500{{actorDetails.profile_path}}">
-    <table class="table1">
-      <tr>
-        <td>Name</td>
-        <td>{{actorDetails.name}}</td>
-      </tr>
-      <br>
-      <br>
-      <tr>
-        <td>Gender</td>
-        <td>{{actorDetails.gender}}</td>
-      </tr>
-      <br>
-      <br>
-      <tr>
-        <td>Birthday</td>
-        <td>{{actorDetails.birthday}}</td>
-      </tr>
-      <br>
-      <br>
-      <tr>
-        <td>Place of birth</td>
-        <td>{{actorDetails.place_of_birth}}</td>
-      </tr>
-      <br>
-      <br>
-      <tr>
-        <td>Known for</td>
-        <td>{{actorDetails.known_for_department}}</td>
-      </tr>
-    </table>
+    <div class="container">
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{actorDetails.name}}</mat-card-title>
+            <mat-card-subtitle>
+              {{actorDetails.known_for_department}}
+            </mat-card-subtitle>
+            <mat-card-subtitle>
+              {{actorDetails.biography}}
+            </mat-card-subtitle>
+            <img mat-card-xl-image src="https://image.tmdb.org/t/p/w500{{actorDetails.profile_path}}" >
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
     </div>
   </mat-tab>
-  <mat-tab label="Biography">
-    <br>
-    {{actorDetails.biography}}
-  </mat-tab>
   <mat-tab label="Featured in">
-    <mat-list>
-      <mat-list-item>Item 1</mat-list-item>
-      <mat-divider></mat-divider>
-    </mat-list>
+    <div class="container">
+      <mat-tab-group>
+        <mat-tab label="Cast">
+          <div class="movie-grid">
+            <a *ngFor="let cast of this.featuredIn.cast" [href]="'movie-details/' + cast.id">
+              <app-movie-item [title]="cast.title" [posterURL]="'https://image.tmdb.org/t/p/w500'+cast.poster_path" [character]="cast.character"/>
+            </a>
+          </div>
+        </mat-tab>
+        <mat-tab label="Crew">
+          <div class="movie-grid">
+            <a *ngFor="let cast of this.featuredIn.crew" [href]="'movie-details/' + cast.id">
+              <app-movie-item [title]="cast.title" [posterURL]="'https://image.tmdb.org/t/p/w500'+cast.poster_path" [character]="cast.job"/>
+            </a>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
   </mat-tab>
 </mat-tab-group>
