@@ -7,5 +7,5 @@ spec:
     app: sep6-angular-gke
   type: LoadBalancer
   ports:
-    - port: 4200
+    - port: 80
       targetPort: 4200
