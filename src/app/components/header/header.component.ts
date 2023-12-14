@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, Output, EventEmitter, Inject} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LoginComponent} from "../../views/login/login.component";
 import {AuthService} from "../../auth/auth.service";
@@ -19,7 +19,7 @@ export class HeaderComponent {
     private authService: AuthService,
     private dialog: MatDialog,
     private router: Router,
-    private accountService: AccountService) {
+    @Inject(AccountService) private accountService: AccountService) {
   }
 
   public onToggleSideNav = () => {
