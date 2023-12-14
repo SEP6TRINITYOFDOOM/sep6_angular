@@ -8,10 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v1
+      - name: Install Node
+        uses: actions/setup-node@v1
         with:
-          node-version: '18.x'
-      - run: npm ci
-      - run: ng serve
+          node-version: 20.10.0
+      - name: npm dependencies
+        run: npm install     
+      - name: Build
+        run: npm run build -- --prod
