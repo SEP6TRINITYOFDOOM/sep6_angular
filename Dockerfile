@@ -1,21 +1,15 @@
-FROM node:20.10.0 as builder
+FROM node:20.10.0 as build-stage
 
 WORKDIR /app
-
-COPY package*.json ./
-
+COPY package*.json /app/
 RUN npm install
+COPY ./ /app/
+ARG configuration=production
+RUN npm run build -- --output-path=./dist/out --configuration $configuration
 
-COPY . .
 
-RUN npm run build
-
-FROM nginx:alpine
-
-RUN rm -rf /usr/share/nginx/html/*
-
-COPY --from=builder /app/dist/sep6 /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+FROM nginx:1.15
+#Copy ci-dashboard-dist
+COPY --from=build-stage /app/dist/out/ /usr/share/nginx/html
+#Copy default nginx configuration
+COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
