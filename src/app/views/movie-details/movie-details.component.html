@@ -15,10 +15,12 @@
                 </button>
               </div>
             </mat-card-title>
-          <mat-card-subtitle style="color: yellow">
-            Rating {{movieDetails.vote_average.toFixed(2)}}/10
+          <mat-card-subtitle>
+            <div style="display:inline-block; margin-right: 2em; color: yellow">
+              Rating {{movieDetails.vote_average.toFixed(2)}}/10 ({{movieDetails.vote_count}} total votes)
+            </div>
           </mat-card-subtitle>
-          <mat-card-subtitle style="color: white">
+          <mat-card-subtitle style="color: white;">
             {{movieDetails.overview}}
           </mat-card-subtitle>
           <mat-card-subtitle>
