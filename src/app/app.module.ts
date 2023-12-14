@@ -29,8 +29,8 @@ import {HttpClient, HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/ht
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptor} from "./auth/token.interceptor";
-import {MatTooltipModule} from "@angular/material/tooltip";
-
+import {MatDialogModule} from "@angular/material/dialog";
+import {MovieItemComponent} from "./views/movie-item/movie-item.component";
 
 
 @NgModule({
@@ -40,35 +40,36 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     NewsCardComponent,
     routingComponents,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    MovieItemComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatInputModule,
-        MatIconModule,
-        MatTabsModule,
-        MatCardModule,
-        CommonModule,
-        MatSelectModule,
-        MatGridListModule,
-        MatMenuModule,
-        MatButtonToggleModule,
-        MatToolbarModule,
-        RouterLink,
-        RouterLinkActive,
-        MatSidenavModule,
-        AppRoutingModule,
-        FlexLayoutModule,
-        MatListModule,
-        NgOptimizedImage,
-        MatExpansionModule,
-        FormsModule,
-        MatFormFieldModule,
-        HttpClientModule,
-        MatTooltipModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule,
+    MatTabsModule,
+    MatCardModule,
+    CommonModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatButtonToggleModule,
+    MatToolbarModule,
+    RouterLink,
+    RouterLinkActive,
+    MatSidenavModule,
+    AppRoutingModule,
+    FlexLayoutModule,
+    MatListModule,
+    NgOptimizedImage,
+    MatExpansionModule,
+    FormsModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    MatDialogModule
+  ],
   providers: [AuthService,
     // AuthGuard,
     // {

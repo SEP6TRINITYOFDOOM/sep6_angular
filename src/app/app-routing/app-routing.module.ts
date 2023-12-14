@@ -8,21 +8,21 @@ import {ProfileComponent} from "../views/profile/profile.component";
 import {MovieItemComponent} from "../views/movie-item/movie-item.component";
 import {FriendItemComponent} from "../views/friend-item/friend-item.component";
 import {AccountSettingsComponent} from "../views/account-settings/account-settings.component";
-import {ActorDetailsComponent} from "../views/actor-details/actor-details.component";
 import {SearchResultComponent} from "../views/search-result/search-result.component";
+import {ActorDetailsComponent} from "../views/actor-details/actor-details.component";
 
 const routes: Routes = [
-  { path: 'home',             component: HomepageComponent},
-  { path: 'register',         component: RegisterComponent},
-  { path: 'login',            component: LoginComponent},
-  { path: 'profile/:id',          component: ProfileComponent},
-  { path: 'account-settings', component: AccountSettingsComponent},
-  { path: 'friend-item',      component: FriendItemComponent},
-  { path: 'movie-item',       component: MovieItemComponent},
-  { path: 'movie-details/:id', component: MovieDetailsComponent},
-  { path: 'actor-details/:id', component: ActorDetailsComponent},
-  { path: 'search/:searchParam', component: SearchResultComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  {path: 'home', component: HomepageComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'profile/:id', component: ProfileComponent},
+  {path: 'account-settings', component: AccountSettingsComponent},
+  {path: 'friend-item', component: FriendItemComponent},
+  {path: 'movie-item', component: MovieItemComponent},
+  {path: 'movie-details/:id', component: MovieDetailsComponent},
+  {path: 'actor-details/:id', component: ActorDetailsComponent},
+  {path: 'search/:searchParam', component: SearchResultComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
