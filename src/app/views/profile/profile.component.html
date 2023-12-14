@@ -1,10 +1,10 @@
 <div class="page-container">
   <div class="profile-container">
     <div class="profile-info">
-      <img src="https://cdn.discordapp.com/avatars/362680397311508491/b2d616df0d7e2beb725c056e0b895729?size=1024"
+      <img src="{{resolveProfilePicture()}}"
            alt="Profile Picture" class="profile-picture">
       <div class="user-info">
-        <h2 *ngIf="user">{{user.name}}</h2>
+        <h2 *ngIf="user">{{user.username}}</h2>
       </div>
     </div>
   </div>
@@ -14,19 +14,41 @@
       <mat-tab label="Favourites">
         <div class="movie-list">
           <app-movie-item *ngFor="let movie of movies" [title]="movie.title"
-                          [posterURL]="movie.posterUrl"></app-movie-item>
+                          [posterURL]="'https://image.tmdb.org/t/p/w500'+movie.poster_path">
+          </app-movie-item>
         </div>
 
       </mat-tab>
       <mat-tab label="Friends">
-        <div class="friend-list list">
-          <div *ngFor="let friend of friends; let i = index" class="friend-row" [ngClass]="{'new-row': i % 2 === 0 && i !== 0}">
-            <app-friend-item [friendName]="friend.name" [profilePictureUrl]="friend.profilePicUrl"></app-friend-item>
-          </div>
-        </div>
+        <mat-tab-group>
+          <mat-tab label="Accepted">
+            <div class="friend-list list">
+              <app-friend-item *ngFor="let friend of friends"
+                               [profilePictureUrl]="'https://api.multiavatar.com/'+friend.user.username+'.svg'"
+                               [friend]="friend"></app-friend-item>
+            </div>
+          </mat-tab>
+          <mat-tab label="Pending" *ngIf="isProfileOwner()">
+            <div class="friend-list list">
+              <app-friend-item *ngFor="let friend of pending"
+                               [profilePictureUrl]="'https://api.multiavatar.com/'+friend.user.username+'.svg'"
+                               [friend]="friend"></app-friend-item>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Blocked" *ngIf="isProfileOwner()">
+            <div class="friend-list list">
+              <app-friend-item *ngFor="let friend of blocked"
+                               [profilePictureUrl]="'https://api.multiavatar.com/'+friend.user.username+'.svg'"
+                               [friend]="friend"></app-friend-item>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
 
       </mat-tab>
-      <mat-tab label="Settings" *ngIf="isProfileOwner()"><app-account-settings></app-account-settings></mat-tab>
+      <mat-tab label="Settings" *ngIf="isProfileOwner()">
+        <app-account-settings [accountId]="accountId"></app-account-settings>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>

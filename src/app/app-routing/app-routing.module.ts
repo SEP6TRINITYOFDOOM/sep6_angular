@@ -10,12 +10,13 @@ import {FriendItemComponent} from "../views/friend-item/friend-item.component";
 import {AccountSettingsComponent} from "../views/account-settings/account-settings.component";
 import {SearchResultComponent} from "../views/search-result/search-result.component";
 import {ActorDetailsComponent} from "../views/actor-details/actor-details.component";
+import {BlockedGuard} from "../auth/blocked.guard";
 
 const routes: Routes = [
   {path: 'home', component: HomepageComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'profile/:id', component: ProfileComponent},
+  {path: 'profile/:id', component: ProfileComponent, canActivate: [BlockedGuard]},
   {path: 'account-settings', component: AccountSettingsComponent},
   {path: 'friend-item', component: FriendItemComponent},
   {path: 'movie-item', component: MovieItemComponent},

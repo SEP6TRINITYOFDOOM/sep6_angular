@@ -3,8 +3,8 @@ import { SearchService } from '../../services/search.service';
 import {SearchResult} from "../../services/Search DTO/SearchResult";
 import {Actor} from "../../services/Actor DTO/Actor";
 import {Movie} from "../../services/Movie DTO/Movie";
-import {Genre} from "../../services/Movie DTO/Genre";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Friend} from "../../services/user.dto/user";
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
@@ -24,7 +24,8 @@ export class SearchResultComponent implements OnInit {
   public searchResult : SearchResult = new class implements SearchResult {
     actorResults: Actor[] = [];
     movieResults: Movie[] = []
-    genres: number[] = [];
+    genres: number[] = []
+    users: Friend[] = []
   }
 
   ngOnInit() {
@@ -49,12 +50,6 @@ export class SearchResultComponent implements OnInit {
     });
     window.location.replace(location.pathname + "?genre=" + genreId);
   }
-
-  private handleNavigation(): void {
-
-    console.log('Navigation completed. Run your code here.');
-  }
-
   public genre_ids : number[] = [];
 
   public movieGenreDictionary: Map<number, string> = new Map([

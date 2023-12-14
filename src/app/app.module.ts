@@ -1,4 +1,4 @@
-import {importProvidersFrom, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {FormsModule} from "@angular/forms";
@@ -25,12 +25,12 @@ import { HeaderComponent } from './components/header/header.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { SidenavListComponent } from './components/sidenav-list/sidenav-list.component';
 import {MatListModule} from "@angular/material/list";
-import {HttpClient, HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
-import {TokenInterceptor} from "./auth/token.interceptor";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MovieItemComponent} from "./views/movie-item/movie-item.component";
+import { ActorItemComponent } from './views/actor-item/actor-item.component';
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import {MovieItemComponent} from "./views/movie-item/movie-item.component";
     routingComponents,
     HeaderComponent,
     SidenavListComponent,
-    MovieItemComponent
+    MovieItemComponent,
+    ActorItemComponent
   ],
   imports: [
     BrowserModule,
@@ -71,12 +72,7 @@ import {MovieItemComponent} from "./views/movie-item/movie-item.component";
     MatDialogModule
   ],
   providers: [AuthService,
-    // AuthGuard,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: TokenInterceptor,
-    //   multi: true,
-    // },
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })

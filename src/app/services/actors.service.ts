@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Actor} from "./Actor DTO/Actor";
 import {Observable} from "rxjs";
-import {MovieCredits} from "./Movie DTO/MoviesCredits";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActorsService {
 
-  private url = "http://35.234.87.9:8080/actors/trending";
+  private url = "http://localhost:8080/actors/trending";
 
   constructor(private http: HttpClient) {
   }

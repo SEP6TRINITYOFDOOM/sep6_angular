@@ -1,7 +1,14 @@
-<mat-card class="friend-card">
-  <div class="profile-picture" [style.background-image]="'url(' + profilePictureUrl + ')'"></div>
-  <div class="friend-details">
-    <h2>{{ friendName }}</h2>
-    <h4>x% compatibility</h4>
+<mat-card class="mat-card" (click)="navigateToProfile()">
+  <img [src]="profilePictureUrl" alt="{{ friend?.user?.username }}'s Profile Picture" class="profile-picture">
+  <div class="content">
+    <div class="name">{{friend?.user?.username}}</div>
+    <div class="friendship-actions">
+      <button mat-raised-button *ngIf="friend?.status===null" (click)="sendFriendRequest($event)">Add</button>
+      <button mat-raised-button *ngIf="friend?.status==='PENDING'" (click)="accept($event)">Accept</button>
+      <button mat-raised-button *ngIf="isBlockable()" (click)="block($event)">Block</button>
+      <button mat-raised-button *ngIf="friend?.status==='BLOCKED'" (click)="reject($event)">Unblock</button>
+      <button mat-raised-button *ngIf="friend?.status==='PENDING'" (click)="reject($event)">Reject</button>
+    </div>
   </div>
 </mat-card>
+

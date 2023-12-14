@@ -8,7 +8,7 @@ import {Movie} from "./Movie DTO/Movie";
 })
 export class FavouriteService {
 
-  private url: string = 'http://35.234.87.9:8080/api/favourites';
+  private url: string = 'http://localhost:8080/api/favourites';
 
   constructor(private http: HttpClient) {
   }
@@ -29,4 +29,3 @@ export class FavouriteService {
 
 
 }
-

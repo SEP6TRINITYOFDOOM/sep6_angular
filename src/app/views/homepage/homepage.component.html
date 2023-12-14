@@ -20,10 +20,11 @@
     </div>
     <div class="col-xl-4 col-sm-12">
       <h2>Trending actors</h2>
-      <app-friend-item class="actor"
+      <app-actor-item class="actor"
                        *ngFor="let trendingActor of actors"
-                       [friendName]="trendingActor.name"
+                       [actorName]="trendingActor.name"
                        [profilePictureUrl]="'https://image.tmdb.org/t/p/w500'+trendingActor.profile_path"
+                      [actorId]="trendingActor.id"
       />
     </div>
   </div>
