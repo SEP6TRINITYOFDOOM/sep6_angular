@@ -1,18 +1,16 @@
-
 export interface ActorDetails {
   adult: boolean
+  also_known_as: string[]
   biography: string
   birthday: string
-  deathday: string
-  gender: string
-  homepage: string
+  deathday: any
+  gender: number
+  homepage: any
+  id: number
+  imdb_id: string
   known_for_department: string
   name: string
   place_of_birth: string
   popularity: number
   profile_path: string
-  id: number
-  imdb_id: number
-  country: string
-  movie_path: string
 }

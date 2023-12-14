@@ -8,4 +8,5 @@ import {Component, Input} from '@angular/core';
 export class MovieItemComponent {
   @Input() title: string = '';
   @Input() posterURL: string = '';
+  @Input() character: string = '';
 }

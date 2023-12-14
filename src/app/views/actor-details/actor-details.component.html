@@ -1,0 +1,44 @@
+<mat-tab-group>
+  <mat-tab label="Actor">
+    <br>
+    <div class="container">
+
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{actorDetails.name}}</mat-card-title>
+            <mat-card-subtitle>
+              {{actorDetails.known_for_department}}
+            </mat-card-subtitle>
+            <mat-card-subtitle>
+              {{actorDetails.biography}}
+            </mat-card-subtitle>
+            <img mat-card-xl-image src="https://image.tmdb.org/t/p/w500{{actorDetails.profile_path}}" >
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Featured in">
+    <div class="container">
+      <mat-tab-group>
+        <mat-tab label="Cast">
+          <div class="movie-grid">
+            <a *ngFor="let cast of this.featuredIn.cast" [href]="'movie-details/' + cast.id">
+              <app-movie-item [title]="cast.title" [posterURL]="'https://image.tmdb.org/t/p/w500'+cast.poster_path" [character]="cast.character"/>
+            </a>
+          </div>
+        </mat-tab>
+        <mat-tab label="Crew">
+          <div class="movie-grid">
+            <a *ngFor="let cast of this.featuredIn.crew" [href]="'movie-details/' + cast.id">
+              <app-movie-item [title]="cast.title" [posterURL]="'https://image.tmdb.org/t/p/w500'+cast.poster_path" [character]="cast.job"/>
+            </a>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-tab>
+</mat-tab-group>
