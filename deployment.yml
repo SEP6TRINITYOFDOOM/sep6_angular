@@ -2,6 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sep6-angular-gke
+  labels:
+    app: sep6-angular-gke
+    stack: frontend
 spec:
   replicas: 1
   selector:
@@ -13,6 +16,8 @@ spec:
         app: sep6-angular-gke
     spec:
       containers:
-        - name: app
+        - name: sep6-angular-gke
           image: gcr.io/PROJECT_ID/IMAGE:TAG
           imagePullPolicy: Always
+          ports:
+            - containerPort: 80
