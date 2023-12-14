@@ -9,7 +9,7 @@ import {MovieCredits} from "./Movie DTO/MoviesCredits";
 })
 export class ActorsService {
 
-  private url = "http://localhost:8080/actors/trending";
+  private url = "http://35.234.87.9:8080/actors/trending";
 
   constructor(private http: HttpClient) {
   }
