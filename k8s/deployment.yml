@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sep6-angular-gke
+  labels:
+    app: sep6-angular-gke
+    stack: frontend
+spec :
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sep6-angular-gke
+  template:
+    metadata:
+      labels:
+        app: sep6-angular-gke
+    spec:
+      containers:
+        - name: sep6-angular-gke
+          image: "gcr.io/sep6-403207/sep6-angular-gke-image:1.0.1"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
