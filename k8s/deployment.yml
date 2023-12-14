@@ -5,7 +5,7 @@ metadata:
   labels:
     app: sep6-angular-gke
     stack: frontend
-spec :
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -17,7 +17,7 @@ spec :
     spec:
       containers:
         - name: sep6-angular-gke
-          image: "gcr.io/sep6-403207/sep6-angular-gke-image:1.0.1"
+          image: gcr.io/PROJECT_ID/IMAGE:TAG
           imagePullPolicy: Always
           ports:
             - containerPort: 80
