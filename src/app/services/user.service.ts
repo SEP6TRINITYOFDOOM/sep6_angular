@@ -8,7 +8,7 @@ import {EditInfoRequest} from "../views/account-settings/account-settings.compon
 })
 export class UserService {
 
-  private apiUrl: string = 'http://35.234.113.110:8080/api/user'
+  private apiUrl: string = 'http://35.246.155.117:8080/api/user'
 
   constructor(private http: HttpClient) {
   }

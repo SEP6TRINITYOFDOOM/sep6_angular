@@ -14,12 +14,12 @@ export class SearchService {
   }
 
   getSearchResult(searchPhrase: string): Observable<SearchResult> {
-    this.url = 'http://35.234.113.110:8080/search/' + searchPhrase;
+    this.url = 'http://35.246.155.117:8080/search/' + searchPhrase;
     return this.http.get<SearchResult>(this.url);
   }
 
   searchWithGenre(searchPhrase: string, genre:number): Observable<SearchResult> {
-    this.url = 'http://35.234.113.110:8080/search/' + searchPhrase + "/" + genre;
+    this.url = 'http://35.246.155.117:8080/search/' + searchPhrase + "/" + genre;
     return this.http.get<SearchResult>(this.url);
   }
 
