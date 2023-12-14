@@ -29,9 +29,7 @@ import {HttpClient, HttpClientModule,HTTP_INTERCEPTORS} from "@angular/common/ht
 import {AuthService} from "./auth/auth.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {TokenInterceptor} from "./auth/token.interceptor";
-import { ActorDetailsComponent } from './views/actor-details/actor-details.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
-
 
 
 
@@ -42,8 +40,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     NewsCardComponent,
     routingComponents,
     HeaderComponent,
-    SidenavListComponent,
-    ActorDetailsComponent
+    SidenavListComponent
   ],
     imports: [
         BrowserModule,

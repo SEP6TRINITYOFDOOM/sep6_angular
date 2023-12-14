@@ -1,12 +1,10 @@
-<!-- your-component.component.html -->
-
 <div class="page-container">
   <div class="profile-container">
     <div class="profile-info">
       <img src="https://cdn.discordapp.com/avatars/362680397311508491/b2d616df0d7e2beb725c056e0b895729?size=1024"
            alt="Profile Picture" class="profile-picture">
       <div class="user-info">
-        <h2>Adam</h2>
+        <h2 *ngIf="user">{{user.name}}</h2>
       </div>
     </div>
   </div>
@@ -28,7 +26,7 @@
         </div>
 
       </mat-tab>
-      <mat-tab label="Settings"><app-account-settings></app-account-settings></mat-tab>
+      <mat-tab label="Settings" *ngIf="isProfileOwner()"><app-account-settings></app-account-settings></mat-tab>
     </mat-tab-group>
   </div>
 </div>
