@@ -41,6 +41,11 @@
       </a>
     </div>
   </mat-tab>
+  <mat-tab label="Users">
+    <div class="outside">
+      <app-friend-item *ngFor="let user of this.searchResult.users" [profilePictureUrl]="'https://api.multiavatar.com/'+user.user.username+'.svg'" [friend]="user"></app-friend-item>
+    </div>
+  </mat-tab>
 </mat-tab-group>
 <script>
 

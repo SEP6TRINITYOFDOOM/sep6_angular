@@ -24,23 +24,27 @@ export class RegisterComponent {
   }
 
   public register() {
-    this.authService.removeToken()
+    this.authService.removeToken();
+
     this.authService.register(this.username, this.email, this.password).subscribe({
       next: () => {
-        this.dialogRef.close()
+        this.dialogRef.close();
+
         this.authService.login(this.username, this.password).subscribe({
-          next: response => {
-            this.authService.setToken(response.token)
-            this.accountService.accountId = response.id
-            this.dialogRef.close()
+          next: (response) => {
+            this.authService.setToken(response.token);
+            this.accountService.accountId = response.id;
+            this.dialogRef.close();
+          },
+          error: () => {
           }
-        })
+        });
       },
-      error: (error) => {
-        console.log(error)
+      error: () => {
       }
-    })
+    });
   }
+
 
   public openLogin() {
     this.dialogRef.close()

@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthService {
   private accessToken = "access_token"
   private api = 'http://localhost:8080/api/auth'
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   setToken(token: string): void {
@@ -25,6 +26,7 @@ export class AuthService {
   removeToken(): void {
     this.token = null;
     localStorage.removeItem(this.accessToken);
+    this.router.navigate(['/'])
   }
 
   login(username: string, password: string): Observable<any> {
@@ -48,6 +50,10 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+
+  canAccess(requesterId: number, resourceOwnerId: number) {
+    return this.http.get<any>(this.api + '/accessible?requesterId='+requesterId+'&resourceId='+resourceOwnerId)
   }
 
 }
