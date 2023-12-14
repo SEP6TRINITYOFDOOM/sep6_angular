@@ -1,15 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {AccountService} from "../../services/account.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   movies: Movie[] = []
   friends: Friend[] = []
+  accountId: number = -1
+  user: User | null = null
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private router: Router, private accountService: AccountService, private userService: UserService) {
     this.movies = [
       {
         title: 'Mulholland Drive',
@@ -56,6 +61,31 @@ export class ProfileComponent {
     return {name: name, profilePicUrl: url}
   }
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id !== null) {
+        this.accountId = +id;
+
+        this.userService.getUser(this.accountId).subscribe({
+          next: response => {
+            this.user = {
+              name: response.username,
+              email: response.email
+            }
+
+          }
+        })
+
+      } else {
+        console.error('could not extract user id')
+      }
+    });
+  }
+
+  isProfileOwner(): boolean {
+    return this.accountService.accountId === this.accountId
+  }
 
 }
 
@@ -68,4 +98,9 @@ export interface Movie {
 export interface Friend {
   name: string,
   profilePicUrl: string
+}
+
+export interface User {
+  email: string;
+  name: string
 }

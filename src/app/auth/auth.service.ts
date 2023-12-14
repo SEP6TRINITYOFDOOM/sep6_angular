@@ -27,28 +27,22 @@ export class AuthService {
     localStorage.removeItem(this.accessToken);
   }
 
-  login(username: string, password: string): Observable<string> {
-    const httpOptions = {
-      responseType: 'text' as 'text',
-    };
+  login(username: string, password: string): Observable<any> {
     const body = {
       username: username,
       password: password
     }
-    return this.http.post(this.api + "/login", body, httpOptions);
+    return this.http.post<any>(this.api + "/login", body);
   }
 
-  register(username: string, email: string, password: string): Observable<string> {
-    const httpOptions = {
-      responseType: 'text' as 'text',
-    };
+  register(username: string, email: string, password: string): Observable<any> {
     const body = {
       username: username,
       password: password,
       email: email
     }
 
-    return this.http.post(this.api + "/register", body, httpOptions);
+    return this.http.post<any>(this.api + "/register", body);
 
   }
 
