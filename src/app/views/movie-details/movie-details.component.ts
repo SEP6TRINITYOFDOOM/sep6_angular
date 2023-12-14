@@ -1,5 +1,4 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {Component, Inject, Input, OnInit} from '@angular/core';
 import {MoviesService} from "../../services/movies.service";
 import {MovieDetails} from "../../services/Movie DTO/MovieDetails";
 import {Genre} from "../../services/Movie DTO/Genre";
@@ -9,7 +8,8 @@ import {SpokenLanguage} from "../../services/Movie DTO/SpokenLanguage";
 import {MovieCredits} from "../../services/Movie DTO/MoviesCredits";
 import {Cast} from "../../services/Movie DTO/Cast";
 import {Crew} from "../../services/Movie DTO/Crew";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import {FavouriteService} from "../../services/favourite.service";
+import {AccountService} from "../../services/account.service";
 
 @Component({
   selector: 'app-movie-details',
@@ -22,10 +22,10 @@ export class MovieDetailsComponent implements OnInit {
 
   public stars: number[] = [1,2,3,4,5,6,7,8,9,10];
 
-  constructor(private movieService: MoviesService) {
+  constructor(private movieService: MoviesService, private favouriteService: FavouriteService, @Inject(AccountService) private accountService: AccountService) {
   }
 
-  public movieDetails : MovieDetails = new class implements MovieDetails {
+  public movieDetails: MovieDetails = new class implements MovieDetails {
     adult: boolean = false;
     backdrop_path: string = "";
     belongs_to_collection: any;
@@ -70,6 +70,10 @@ export class MovieDetailsComponent implements OnInit {
       data => this.movieCredits = data
     );
 
+  }
+
+  public addToFavourites() {
+    this.favouriteService.addToFavourites(this.accountService.accountId, +this.id, 1).subscribe()
   }
 
   rateMovie(rating: number){
