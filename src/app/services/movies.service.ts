@@ -14,17 +14,17 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getMovie(id:string): Observable<MovieDetails> {
-    this.url = 'http://localhost:8080/movies?id=' + id;
+    this.url = 'http://34.159.86.32:8080/movies?id=' + id;
     return this.http.get<MovieDetails>(this.url);
   }
 
   getTrending(): Observable<Movie[]> {
-    this.url = 'http://localhost:8080/movies/trending';
+    this.url = 'http://34.159.86.32:8080/movies/trending';
     return this.http.get<Movie[]>(this.url);
   }
 
   getCredits(id:string): Observable<MovieCredits> {
-    this.url = 'http://localhost:8080/movie/' + id + "/credits"
+    this.url = 'http://34.159.86.32:8080/movie/' + id + "/credits"
     return this.http.get<MovieCredits>(this.url);
   }
 }

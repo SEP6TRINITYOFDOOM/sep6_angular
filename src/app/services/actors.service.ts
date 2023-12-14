@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class ActorsService {
 
-  private url = "http://localhost:8080/actors/trending";
+  private url = "http://34.159.86.32:8080/actors/trending";
 
   constructor(private http: HttpClient) {
   }

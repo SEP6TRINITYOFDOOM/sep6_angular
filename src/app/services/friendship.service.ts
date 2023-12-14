@@ -8,7 +8,7 @@ import {Friend} from "./user.dto/user";
   providedIn: 'root',
 })
 export class FriendshipService {
-  apiUrl: string = 'http://localhost:8080/api/friendships'
+  apiUrl: string = 'http://34.159.86.32:8080/api/friendships'
 
 
   constructor(private http: HttpClient, private accountService: AccountService) {
