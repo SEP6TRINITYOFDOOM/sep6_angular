@@ -1,19 +1,73 @@
-name: Node.js CI
+name: Build and Deploy to GKE
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+env:
+  PROJECT_ID: ${{secrets.GKE_PROJECT}}
+  GKE_CLUSTER: sep6-angular-gke
+  GKE_ZONE: europe-west3-a
+  DEPLOYMENT_NAME: sep6-angular-gke
+  IMAGE: sep6-angular-gke-image
+  TAG: 1.0.0
 
 jobs:
-  build:
-
+  setup-build-publish-deploy:
+    name: Setup Build Publish And Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Install Node
         uses: actions/setup-node@v1
         with:
           node-version: 20.10.0
-      - name: npm dependencies
-        run: npm install     
+
+      - name: Install npm dependencies
+        run: npm install
+
       - name: Build
         run: npm run build
+
+      - name: Setup Google Cloud CLI
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@0.1.3
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+        with:
+          service_account_key: ${{secrets.GKE_SA_KEY}}
+          project_id: ${{secrets.GKE_PROJECT}}
+
+      - name: Configure Docker
+        run: |-
+          gcloud --quiet auth configure-docker
+      - name: Get GKE Credentials
+        run: |-
+          gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+
+      - name: setup-gke-gcloud-auth-plugin
+        # You may pin to the exact commit or the version.
+        # uses: simenandre/setup-gke-gcloud-auth-plugin@d54222d853c0423e3fd4706128ce0076718880fe
+        uses: simenandre/setup-gke-gcloud-auth-plugin@v1.1.2
+
+      - name: Build Docker Image
+        run: |-
+          docker build -t "gcr.io/$PROJECT_ID/$IMAGE:$TAG" .
+
+      - name: Publish Docker Image to GCR
+        run: |-
+          docker push "gcr.io/$PROJECT_ID/$IMAGE:$TAG"
+
+      - name: Set up Kustomize
+        run: |-
+          curl -sfLo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v3.1.0/kustomize_3.1.0_linux_amd64
+          chmod u+x ./kustomize
+
+      - name: Deploy Image to GKE cluster
+        run: |-
+          ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$IMAGE:$TAG
+          ./kustomize build . | kubectl apply -f -
+          kubectl rollout status deployment/$DEPLOYMENT_NAME
+          kubectl get services -o wide
