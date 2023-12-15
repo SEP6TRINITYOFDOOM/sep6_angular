@@ -3,6 +3,7 @@ import {FriendshipService} from "../../services/friendship.service";
 import {Friend} from "../../services/user.dto/user";
 import {Router} from "@angular/router";
 import {AccountService} from "../../services/account.service";
+import {AuthService} from "../../auth/auth.service";
 
 @Component({
   selector: 'app-friend-item',
@@ -16,7 +17,11 @@ export class FriendItemComponent {
   @Input() userIsRequester = false
   @Input() friend: Friend | null = null
 
-  constructor(private friendService: FriendshipService, private router: Router, private accountService: AccountService) {
+  constructor(
+    private friendService: FriendshipService,
+    private router: Router,
+    private accountService: AccountService,
+    private authService: AuthService) {
   }
 
   public sendFriendRequest(event: MouseEvent) {
@@ -60,7 +65,11 @@ export class FriendItemComponent {
   }
 
   public isBlockable(): boolean {
-    return (this.friend?.user.id !== this.accountService.accountId) && this.friend?.status!=='BLOCKED'
+    return (this.friend?.user.id !== this.accountService.accountId) && this.friend?.status !== 'BLOCKED'
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authService.isLoggedIn()
   }
 
 

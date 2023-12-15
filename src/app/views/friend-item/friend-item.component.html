@@ -2,7 +2,7 @@
   <img [src]="profilePictureUrl" alt="{{ friend?.user?.username }}'s Profile Picture" class="profile-picture">
   <div class="content">
     <div class="name">{{friend?.user?.username}}</div>
-    <div class="friendship-actions">
+    <div class="friendship-actions" *ngIf="isLoggedIn()">
       <button mat-raised-button *ngIf="friend?.status===null" (click)="sendFriendRequest($event)">Add</button>
       <button mat-raised-button *ngIf="friend?.status==='PENDING'" (click)="accept($event)">Accept</button>
       <button mat-raised-button *ngIf="isBlockable()" (click)="block($event)">Block</button>
