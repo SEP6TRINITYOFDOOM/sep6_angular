@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class MovieService {
-  private baseUrl = 'http://localhost:8080/api/movies';
+  private baseUrl = 'http://35.246.155.117:8080/api/movies';
 
   constructor(private http: HttpClient) { }
 

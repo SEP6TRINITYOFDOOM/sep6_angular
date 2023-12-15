@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 export class AuthService {
   private token: string | null = null
   private accessToken = "access_token"
-  private api = 'http://localhost:8080/api/auth'
+  private api = 'http://35.246.155.117:8080/api/auth'
 
   constructor(private http: HttpClient, private router: Router) {
   }

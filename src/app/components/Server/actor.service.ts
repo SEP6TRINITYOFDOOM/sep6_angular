@@ -14,12 +14,12 @@ export class ActorService {
   constructor(private http: HttpClient) { }
 
   getActorDetails(id: string): Observable<ActorDetails> {
-    this.url = 'http://localhost:8080/actor/' + id;
+    this.url = 'http://35.246.155.117:8080/actor/' + id;
     return this.http.get<ActorDetails>(this.url);
   }
 
   getFeaturedIn(id: string): Observable<MovieCredits> {
-    this.url = 'http://localhost:8080/person/' + id;
+    this.url = 'http://35.246.155.117:8080/person/' + id;
     return this.http.get<MovieCredits>(this.url);
   }
 }
