@@ -48,6 +48,7 @@ export class HeaderComponent {
 
   public logout() {
     this.authService.removeToken();
+    this.accountService.clearAccount()
   }
 
   public goToProfile() {

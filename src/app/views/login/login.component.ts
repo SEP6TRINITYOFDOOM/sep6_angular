@@ -24,6 +24,7 @@ export class LoginComponent {
 
   public login(): void {
     this.authService.removeToken()
+    this.accountService.clearAccount()
     this.authService.login(this.username, this.password).subscribe({
       next: (response) => {
         this.authService.setToken(response.token)

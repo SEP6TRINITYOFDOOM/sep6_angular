@@ -25,7 +25,7 @@ export class RegisterComponent {
 
   public register() {
     this.authService.removeToken();
-
+    this.accountService.clearAccount();
     this.authService.register(this.username, this.email, this.password).subscribe({
       next: () => {
         this.dialogRef.close();
